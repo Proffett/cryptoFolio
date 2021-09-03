@@ -5,13 +5,12 @@ import {Balance} from "../mock/initialData";
 
 
 //get data
-const fetchData = () => fetch('https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,BTC,DOGE&tsyms=USD',
+const fetchData = () => fetch('https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,BTC,DOGE,XRP&tsyms=USD',
     {"method": "GET"})
 
 const fetchChart = ({history, coin, limit}) =>
-    fetch(`https://min-api.cryptocompare.com/data/v2/histo${history}?fsym=${coin}&tsym=USD&limit=${limit}&aggregate=1`, {"method": "GET"})
+    fetch(`https://min-api.cryptocompare.com/data/v2/histo${history}?fsym=${coin}&tsym=USD&limit=${limit}`, {"method": "GET"})
 
-const currentDate = new Date()
 
 //transform data
 function* fetchCryptoData() {
@@ -48,12 +47,25 @@ function* fetchChartData(action) {
     let { history } = action.payload
 
     function transformTime(history, time) {
-        if(history === 'minute')
-            return new Date(currentDate - time).toLocaleDateString()
-        if(history === 'hour')
-            return time
+        const DATE = new Date(time * 1000)
+        const year = DATE.getFullYear()
+        const month = DATE.getMonth() + 1
+        const date = DATE.getDate()
+        const hour = DATE.getHours()
+        const min = DATE.getMinutes()
+        let formattedTime = ''
+
+        if(history === 'minute') {
+            formattedTime = hour + ':' + min
+            return formattedTime
+        }
+        else if(history === 'hour') {
+            formattedTime = hour + ':00'
+            return formattedTime
+        }
         else {
-            return time
+            formattedTime = date + '.' + month + '.' + year
+            return formattedTime
         }
     }
 

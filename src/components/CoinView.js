@@ -108,13 +108,13 @@ const CoinView = () => {
                 <div className='history-items'>
                     <ul>
                         <li className={historyValue ? 'li-active': null} onClick={() => handleHistory('minute')}>
-                            minutes
+                            Minutes
                         </li>
                         <li className={historyValue === 'hour' ? 'li-active': null} onClick={() => handleHistory('hour')}>
-                            hours
+                            Hours
                         </li>
                         <li className={historyValue === 'day' ? 'li-active': null} onClick={() => handleHistory('day')}>
-                            daily
+                            Daily
                         </li>
                     </ul>
                 </div>

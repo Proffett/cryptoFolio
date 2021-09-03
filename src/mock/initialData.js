@@ -1,5 +1,5 @@
 //initial balance
-const Balance = [0.8, 4, 41]
+const Balance = [0.8, 4, 41, 101]
 
 const SymbolToFullName = {
     BTC:	'Bitcoin',
