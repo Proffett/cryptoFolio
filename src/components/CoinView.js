@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getChart, getCoinData, setCoin } from "../redux/reducer";
 import { useHistory, useParams } from "react-router";
-import { Link } from "react-router-dom";
 import { SymbolToFullName } from "../mock/initialData";
-import LeftArrowSvg from "./svg/LeftArrowSvg";
 import Chart from "./Chart";
+import Header from "./Header";
 
 
 const CoinView = () => {
@@ -57,9 +56,7 @@ const CoinView = () => {
     return(
         <div className="App">
             <main className='wrapper' style={{overflow: "hidden"}}>
-                <div className="app-header" >
-                    <Link to="/"><LeftArrowSvg/></Link>
-                </div>
+                <Header/>
 
                 {/*carousel*/}
                 {!isLoading && <div className="coin-carousel-container">

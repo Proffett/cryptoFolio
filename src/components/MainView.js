@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAsyncCryptoData } from "../redux/reducer";
 import { useHistory } from "react-router-dom";
 import { SymbolToFullName } from "../mock/initialData";
-import LoupSvg from "./svg/LoupSvg";
-import BellSvg from "./svg/BellSvg";
 import LoaderSvg from "./svg/LoaderSvg";
+import Header from "./Header";
 
 
 const MainView = () => {
@@ -30,10 +29,7 @@ const MainView = () => {
 
     return(
             <>
-                <div className="app-header" >
-                    <LoupSvg/>
-                    <BellSvg/>
-                </div>
+                <Header mainScreen />
 
                 <p className='second-color'>Your total balance</p>
 

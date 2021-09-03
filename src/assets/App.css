@@ -7,6 +7,9 @@
 
 .app-header {
   display: flex;
+  position: sticky;
+  top: 0;
+  background: #3c3f4b29;
   flex-direction: row;
   justify-content: space-between;
   padding: 15px 20px;
