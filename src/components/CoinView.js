@@ -9,10 +9,12 @@ import Chart from "./Chart";
 
 
 const CoinView = () => {
-    const [isLoading, setIsLoading] = useState(true)
     const history = useHistory()
     const dispatch = useDispatch();
     const {coin} = useParams();
+    const [historyClassActive, setHistoryClassActive] = useState('hour')
+    const [coinClassActive, setCoinClassActive] = useState(coin)
+    const [isLoading, setIsLoading] = useState(true)
     const coinFullName = SymbolToFullName[coin]
 
     const times = useSelector((state) => state.times)
@@ -40,10 +42,12 @@ const CoinView = () => {
 
 
     const handleCoinItem = (coin) => {
+        setCoinClassActive(coin)
         return history.push(`/${coin}`)
     }
     const handleHistory = (time) => {
         historyValue = time
+        setHistoryClassActive(time)
         if(historyValue === 'day') limit = 24
         else limit = 60
 
@@ -70,7 +74,7 @@ const CoinView = () => {
                             currentCoinProfit = coinProfit
                         }
                         return (
-                            <div key={index} className='coin-item-list' onClick={() => handleCoinItem(coinName)}>
+                            <div key={index} className={coinClassActive === coinName.toUpperCase() ? 'coin-item-list-active' : 'coin-item-list'} onClick={() => handleCoinItem(coinName)}>
                                 <div className='flex-item'>
                                     <div style={{fontSize: 32}} className={`icon icon-${coinName.toLowerCase()}`}/>
                                     <div className='flex-left-column'>
@@ -107,13 +111,13 @@ const CoinView = () => {
                 {/*chart*/}
                 <div className='history-items'>
                     <ul>
-                        <li className={historyValue ? 'li-active': null} onClick={() => handleHistory('minute')}>
+                        <li className={historyClassActive === 'minute' ? 'li-active': null} onClick={() => handleHistory('minute')}>
                             Minutes
                         </li>
-                        <li className={historyValue === 'hour' ? 'li-active': null} onClick={() => handleHistory('hour')}>
+                        <li className={historyClassActive === 'hour' ? 'li-active': null} onClick={() => handleHistory('hour')}>
                             Hours
                         </li>
-                        <li className={historyValue === 'day' ? 'li-active': null} onClick={() => handleHistory('day')}>
+                        <li className={historyClassActive === 'day' ? 'li-active': null} onClick={() => handleHistory('day')}>
                             Daily
                         </li>
                     </ul>
