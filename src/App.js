@@ -1,4 +1,4 @@
-import './assets/App.css';
+import './styles/App.css';
 import {Provider} from "react-redux";
 import store from "./redux/store";
 import MainView from "./components/MainView";
@@ -14,7 +14,6 @@ function App() {
       <Provider store={store}>
           <BrowserRouter>
               <div className="App">
-
                   <main className='wrapper'>
                       <Switch>
                           <Route path="/" exact ><MainView/></Route>

@@ -4,7 +4,7 @@ import {ASYNC_FETCH_CRYPTO_DATA, GET_CHART} from "./actions";
 import {Balance} from "../mock/initialData";
 
 
-//get data
+//fetch data
 const fetchData = () => fetch('https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,BTC,DOGE,XRP&tsyms=USD',
     {"method": "GET"})
 
@@ -15,9 +15,9 @@ const fetchChart = ({history, coin, limit}) =>
 //transform data
 function* fetchCryptoData() {
     try {
-        const getCryptoData = yield call(fetchData);
+        const fetchCryptoData = yield call(fetchData);
 
-        const json = yield call(() => getCryptoData.json());
+        const json = yield call(() => fetchCryptoData.json());
         const data = [...Object.entries(json)]
 
         //calculate values, profit, summary and send to store
@@ -27,7 +27,7 @@ function* fetchCryptoData() {
             item.calcProfit = +(20 * Math.random()).toFixed(2)
         })
 
-        const profit = data.reduce((acc, {calcProfit}) => {
+        const profit = data.reduce((acc, {calcProfit, calcValue}) => {
             return acc + calcProfit
         }, 0)
         const summary = data.reduce((acc, {calcValue}) => {
@@ -70,9 +70,8 @@ function* fetchChartData(action) {
     }
 
     try {
-
-        const getChartData = yield call(fetchChart, action.payload);
-        const { Data } = yield call(() => getChartData.json());
+        const fetchChartData = yield call(fetchChart, action.payload);
+        const { Data } = yield call(() => fetchChartData.json());
 
         times = Data['Data'].map(({time}) => {
             return transformTime(history, time)
@@ -84,6 +83,7 @@ function* fetchChartData(action) {
 
         yield put(setChart({times, values}));
     }
+
     catch(error) {
         yield put({type: "FETCH_CRYPTO_FAILED", message: error});
         console.error('fetchChart Saga:', error.message)

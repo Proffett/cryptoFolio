@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAsyncCryptoData } from "../redux/reducer";
+import {fetchAsyncCryptoData} from "../redux/reducer";
 import { useHistory } from "react-router-dom";
-import { SymbolToFullName } from "../mock/initialData";
+import {SymbolToFullName} from "../mock/initialData";
 import LoaderSvg from "./svg/LoaderSvg";
 import Header from "./Header";
 
@@ -40,7 +40,15 @@ const MainView = () => {
                         <p className='green-portfolio'>${walletProfit}<span>&#8593;</span></p>
 
                         <section className='coins-wrapper'>
-                            {isError ? <p style={{color: "red"}}>Ошибка в получении данных</p> :
+                            {isError
+                                ?
+                                (<>
+                                <p>Something went wrong</p>
+                                <button className='button-try-again' onClick={()=>dispatch(fetchAsyncCryptoData())}>
+                                    try again
+                                </button>
+                                </>)
+                                :
                                 data.map((coin, index) => {
 
                                         const coinName = coin[0]
@@ -68,12 +76,12 @@ const MainView = () => {
                                                     <div className='coin-item-row'>
                                                         <div style={{display: "flex", flexDirection: 'column', textAlign: 'left'}}>
                                                             <span>${coinCurrentTick}</span>
-                                                            <span className="second-color">price</span>
+                                                            <span className="second-color">Price</span>
                                                         </div>
 
                                                         <div style={{display: "flex", flexDirection: 'column', textAlign: 'right'}}>
                                                             <span className='green'>{generatedProfit}</span>
-                                                            <span className="second-color">profit/loss</span>
+                                                            <span className="second-color">Profit/Loss</span>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -35,6 +35,7 @@ export default function rootReducer(state = defaultState, action) {
             summary: action.payload.summary.toFixed(2),
             profit: action.payload.profit.toFixed(2),
             isLoading: false,
+            isError: false
         };
         case FETCH_CRYPTO_FAILED: return {...state, isLoading: false, isError: true};
 

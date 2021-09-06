@@ -4,6 +4,7 @@ import BellSvg from "./svg/BellSvg";
 import {Link} from "react-router-dom";
 import LeftArrowSvg from "./svg/LeftArrowSvg";
 
+
 const Header = ({mainScreen}) => {
     return(
         <>

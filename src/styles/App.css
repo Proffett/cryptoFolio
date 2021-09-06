@@ -12,7 +12,7 @@
   background: #3c3f4b29;
   flex-direction: row;
   justify-content: space-between;
-  padding: 15px 20px;
+  padding: 35px 20px;
   color: white;
 }
 
@@ -155,4 +155,12 @@
 }
 .flex-right-column {
   display: flex; flex-direction: column; text-align: right; margin-right: 5px;
+}
+.button-try-again {
+  color: #ffffff;
+  font-size: 18px;
+  height: 50px;
+  width: 100px;
+  margin: 0 auto;
+  background: rgba(72, 163, 134, 0);
 }

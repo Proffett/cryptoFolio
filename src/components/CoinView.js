@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getChart, getCoinData, setCoin } from "../redux/reducer";
+import {fetchAsyncCryptoData, getChart, getCoinData, setCoin} from "../redux/reducer";
 import { useHistory, useParams } from "react-router";
-import { SymbolToFullName } from "../mock/initialData";
+import {SymbolToFullName} from "../mock/initialData";
 import Chart from "./Chart";
 import Header from "./Header";
 
@@ -29,7 +29,8 @@ const CoinView = () => {
     useEffect( () => {
         setIsLoading(true)
 
-        if(!chosenCoinData) {
+        if(!chosenCoinData || !coinsData) {
+            dispatch(fetchAsyncCryptoData())
             dispatch(setCoin(coin))
             dispatch(getCoinData(coin))
         }
@@ -37,7 +38,7 @@ const CoinView = () => {
         dispatch(getChart({coin, history: historyValue, limit: limit}))
 
         setIsLoading(false)
-    }, [dispatch, coin, limit, historyValue, chosenCoinData]);
+    }, [dispatch, coin, limit, historyValue, chosenCoinData, coinsData]);
 
 
     const handleCoinItem = (coin) => {
