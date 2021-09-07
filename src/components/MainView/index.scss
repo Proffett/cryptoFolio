@@ -1,0 +1,99 @@
+.MainView {
+  &__summary-portfolio {
+
+    &_daily-changes {
+      color: #48a386;
+      &:before {
+        content: '+'
+      }
+      &:after {
+        content: "";
+      }
+    }
+  }
+
+  &__dollar_size {
+    font-size: 15px;
+  }
+
+  &__coins-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__coin-item {
+    display: flex;
+    flex-direction: column;
+    min-height: 150px;
+    margin: 12px 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+
+    &_left-column {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    &_right-column {
+      display: flex;
+      flex-direction: column;
+      text-align: right;
+    }
+  }
+
+  &__coin-item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__coin-item_left-column {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  &__coin-item_left-column_up {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+  &__coin-item_left-column_margin-left {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 5px;
+  }
+
+  &__coin-item_right-column {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+  }
+  &__coin-item_right-column-up {
+    display: flex;
+    align-items: center;
+    text-align: right;
+  }
+
+  &__profit {
+    color: #48a386;
+    &:before {
+      content: '+'
+    }
+    &:after {
+      content: '%'
+    }
+  }
+
+  &__loss {
+    color: #b23d3d;
+    &:before {
+      content: '-'
+    }
+    &:after {
+      content: '%'
+    }
+  }
+
+}

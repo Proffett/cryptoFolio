@@ -1,55 +1,52 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {CleanWebpackPlugin} = require("clean-webpack-plugin")
-const CopyWebpackPlugin = require("copy-webpack-plugin")
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCssAssetPlugin = require('optimize-css-assets-webpack-plugin')
-const TerserWebpackPlugin = require('terser-webpack-plugin')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
-const isDev = process.env.NODE_ENV === 'development'
-const isProd = !isDev
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = !isDev;
 
 const optimization = () => {
   const config = {
     splitChunks: {
-      chunks: "all"
-    }
-  }
+      chunks: 'all',
+    },
+  };
 
-  if(isProd) {
-    config.minimizer = [
-        new OptimizeCssAssetPlugin(),
-        new TerserWebpackPlugin()
-    ]
+  if (isProd) {
+    config.minimizer = [new OptimizeCssAssetPlugin(), new TerserWebpackPlugin()];
   }
-  return config
-}
+  return config;
+};
 
-const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
 
-const cssLoaders = extra => {
- const loaders = [{loader: MiniCssExtractPlugin.loader, options: {}}, 'css-loader']
-  if(extra) {
-    loaders.push(extra)
+const cssLoaders = (extra) => {
+  const loaders = [{ loader: MiniCssExtractPlugin.loader, options: {} }, 'css-loader'];
+  if (extra) {
+    loaders.push(extra);
   }
-  return loaders
-}
+  return loaders;
+};
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
 
   entry: {
-    main: ['@babel/polyfill','./index.js'],
-    app: ['@babel/polyfill','./App.js'],
+    main: ['core-js/stable', 'regenerator-runtime/runtime', './index.js'],
+    // app: ['core-js/stable', 'regenerator-runtime/runtime', './App.js'],
   },
   output: {
     filename: filename('js'),
-    path: path.resolve(__dirname, 'build')
+    path: path.resolve(__dirname, 'build'),
   },
 
   resolve: {
-    extensions: ['.png','.svg', '.js', '.json', '.ts'],
+    extensions: ['.png', '.svg', '.js', '.json', '.ts'],
   },
 
   optimization: optimization(),
@@ -63,67 +60,65 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./index.html",
+      template: './index.html',
       minify: {
-        collapseWhitespace: isProd
-      }
+        collapseWhitespace: isProd,
+      },
     }),
 
     new CleanWebpackPlugin(),
 
     new MiniCssExtractPlugin({
-      filename: filename('css')
-    })
+      filename: filename('[name].css'),
+      chunkFilename: filename('[id].css'),
+    }),
   ],
+
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-          options: {
-            presets: [
-                '@babel/preset-env',
-            ],
-            plugins: [
-                '@babel/plugin-proposal-class-properties'
-            ]
-          }
+        options: {
+          presets: ['@babel/preset-env'],
+          plugins: ['@babel/plugin-proposal-class-properties'],
+        },
       },
       {
         test: /\.ts$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          presets: [
-            '@babel/preset-env',
-            '@babel/preset-typescript'
-          ],
-          plugins: [
-            '@babel/plugin-proposal-class-properties'
-          ]
-        }
+          presets: ['@babel/preset-env', '@babel/preset-typescript'],
+          plugins: ['@babel/plugin-proposal-class-properties'],
+        },
       },
       {
         test: /\.css$/,
-        use: [{loader: MiniCssExtractPlugin.loader, options: {}}, 'css-loader']
+        use: [
+          { loader: MiniCssExtractPlugin.loader, options: {} },
+          'style-loader',
+          'css-loader',
+          // 'postcss-loader',
+        ],
       },
       {
         test: /\.less$/,
-        use: cssLoaders('less-loader')
+        use: cssLoaders('less-loader'),
       },
       {
         test: /\.s[ac]ss$/,
-        use: cssLoaders('sass-loader')
+        use: cssLoaders('sass-loader'),
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        use: ['file-loader']
+        use: ['file-loader'],
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/,
-        use: ['file-loader']
-      }
-    ]
-  }
-}
+        use: ['file-loader'],
+      },
+    ],
+  },
+};
