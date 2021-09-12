@@ -7,15 +7,18 @@ import {
   GET_COIN_DATA,
   SET_CHART,
   SET_COIN,
+  SET_COINS,
+  SET_MODAL,
 } from './actions';
 
 const defaultState = {
   cryptoData: [],
+  coins: ['BTC', 'ETH', 'XRP', 'ADA'],
   walletSummary: 0,
   isMainScreen: true,
-  isLoading: true,
+  isLoading: false,
   isError: false,
-  chosenCoin: 'DOGE',
+  chosenCoin: 'BTC',
   chosenCoinData: [],
   history: 'hour',
   times: 0,
@@ -24,6 +27,12 @@ const defaultState = {
 
 export default function rootReducer(state = defaultState, action) {
   switch (action.type) {
+    case ASYNC_FETCH_CRYPTO_DATA:
+      return {
+        ...state,
+        coins: action.payload,
+        isLoading: false,
+      };
     case FETCH_CRYPTO_DATA_PENDING:
       return {
         ...state,
@@ -69,15 +78,28 @@ export default function rootReducer(state = defaultState, action) {
         chosenCoin: action.payload,
         isLoading: false,
       };
+    case SET_COINS:
+      return {
+        ...state,
+        coins: action.payload,
+        isLoading: false,
+      };
+    case SET_MODAL:
+      return {
+        ...state,
+        modal: !state.modal,
+      };
     default:
       return state;
   }
 }
 
-export const fetchAsyncCryptoData = () => ({ type: ASYNC_FETCH_CRYPTO_DATA });
+export const fetchAsyncCryptoData = (payload) => ({ type: ASYNC_FETCH_CRYPTO_DATA, payload });
 export const setCryptoData = (payload) => ({ type: FETCH_CRYPTO_SUCCESS, payload });
 export const getCoinData = (payload) => ({ type: GET_COIN_DATA, payload });
 export const setCoin = (payload) => ({ type: SET_COIN, payload });
 export const getChart = (payload) => ({ type: GET_CHART, payload });
 export const setChart = (payload) => ({ type: SET_CHART, payload });
 export const setError = () => ({ type: FETCH_CRYPTO_FAILED });
+export const setCoins = (payload) => ({ type: SET_COINS, payload });
+export const setModal = () => ({ type: SET_MODAL });

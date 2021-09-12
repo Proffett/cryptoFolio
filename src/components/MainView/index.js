@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { fetchAsyncCryptoData } from '../../redux/reducer';
+import { fetchAsyncCryptoData } from '../../store/reducer';
 import { SymbolToFullName } from '../../mock/initialData';
 import Header from '../Header';
 import { cnMainView } from './cn-MainView';
@@ -11,18 +11,23 @@ const MainView = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const walletSummary = useSelector((state) => state.summary);
+  const coins = useSelector((state) => state.coins);
   const walletProfit = useSelector((state) => state.profit);
   const data = useSelector((state) => state.cryptoData);
   const isError = useSelector((state) => state.isError);
 
   useEffect(() => {
-    dispatch(fetchAsyncCryptoData());
+    if (localStorage.favorites) {
+      dispatch(fetchAsyncCryptoData(JSON.parse(localStorage.getItem('favorites'))));
+    } else dispatch(fetchAsyncCryptoData(['BTC', 'ETH', 'XRP', 'ADA']));
   }, [dispatch]);
 
   const handleCoinItem = (target, coin) => {
     target.focus();
     history.push(`/${coin}`);
   };
+
+  console.log('mainView: ', JSON.stringify(coins));
 
   return (
     <>
@@ -49,13 +54,14 @@ const MainView = () => {
               <button
                 type="button"
                 className="button-try-again"
-                onClick={() => dispatch(fetchAsyncCryptoData())}
+                onClick={() => dispatch(fetchAsyncCryptoData(['BTC']))}
               >
                 try again
               </button>
             </>
           ) : (
             data.map((coin, index) => {
+              console.log(coin);
               const key = index + Math.random();
               const coinName = coin[0];
               const coinCurrentTick = coin[1].USD;

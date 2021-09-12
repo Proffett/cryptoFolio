@@ -1,8 +1,8 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router';
-import React, { useEffect } from 'react';
-import LoaderSvg from '../components/svg/LoaderSvg';
-import { fetchAsyncCryptoData } from '../redux/reducer';
+import React from 'react';
+import LoaderSvg from '../components/UI/svg/LoaderSvg';
+
 import { cnApp } from './cn-app';
 import '../styles/App.scss';
 import './index.scss';
@@ -10,12 +10,7 @@ import MainView from '../components/MainView';
 import CoinView from '../components/CoinView';
 
 export const App = () => {
-  const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.isLoading);
-
-  useEffect(() => {
-    dispatch(fetchAsyncCryptoData());
-  }, [dispatch]);
 
   return (
     <div className={cnApp()}>

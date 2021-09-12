@@ -1,0 +1,22 @@
+.Modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  z-index: 10;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background: #0000009e;
+  //-webkit-transform: translateX(-100%);
+  //transform: translateX(-100%);
+  //transition: transform .5s,-webkit-transform .5s;
+
+}
+
+.button_modal {
+margin: 0 auto;
+width: 100px;
+}

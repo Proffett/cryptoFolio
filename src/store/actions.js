@@ -6,6 +6,8 @@ const GET_COIN_DATA = 'GET_COIN_DATA';
 const GET_CHART = 'GET_CHART';
 const SET_COIN = 'SET_COIN';
 const SET_CHART = 'SET_CHART';
+const SET_COINS = 'SET_COINS';
+const SET_MODAL = 'SET_MODAL';
 
 export {
   ASYNC_FETCH_CRYPTO_DATA,
@@ -16,4 +18,6 @@ export {
   GET_COIN_DATA,
   SET_COIN,
   SET_CHART,
+  SET_COINS,
+  SET_MODAL,
 };

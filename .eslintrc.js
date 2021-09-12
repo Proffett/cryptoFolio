@@ -27,6 +27,7 @@ module.exports = {
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.tsx'] }],
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    ' react-hooks/exhaustive-deps': 'off',
   },
   settings: {
     'postcss-modules': {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router';
-import { fetchAsyncCryptoData, getChart, getCoinData, setCoin } from '../../redux/reducer';
+import { fetchAsyncCryptoData, getChart, getCoinData, setCoin } from '../../store/reducer';
 import { SymbolToFullName } from '../../mock/initialData';
 import Header from '../Header';
 import Chart from '../Chart';
@@ -31,7 +31,7 @@ const CoinView = () => {
     setIsLoading(true);
 
     if (!chosenCoinData || !coinsData) {
-      dispatch(fetchAsyncCryptoData());
+      dispatch(fetchAsyncCryptoData(coin));
       dispatch(setCoin(coin));
       dispatch(getCoinData(coin));
     }
