@@ -1,70 +1,196 @@
-# Getting Started with Create React App
+# CryptoFolio - Cryptocurrency Portfolio Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
 
-## Available Scripts
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![Webpack](https://img.shields.io/badge/Webpack-8DD6F9?style=for-the-badge&logo=webpack&logoColor=black)
 
-In the project directory, you can run:
+</div>
 
-### `yarn start`
+## 📖 Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+CryptoFolio is a modern web application for tracking cryptocurrency portfolios with real-time price updates and profit/loss calculations. The application provides users with an intuitive interface for managing their crypto investments and analyzing their performance.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### ✨ Key Features
 
-### `yarn test`
+- 📊 **Portfolio Tracking** - Add and manage cryptocurrencies in your portfolio
+- 💰 **Real-time Prices** - Live cryptocurrency data via CoinGecko API
+- 📈 **Profit Analytics** - Automatic profit/loss calculation for each position
+- 📱 **Responsive Design** - Full mobile device support
+- 🎨 **Modern UI** - Intuitive and beautiful interface
+- 💾 **Local Storage** - Portfolio data persistence in browser
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠 Technology Stack
 
-### `yarn build`
+### Frontend
+- **React** - Core library for building user interfaces
+- **Redux** - Application state management
+- **JavaScript (ES6+)** - Primary programming language
+- **SCSS** - CSS preprocessor for styling
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Development Tools
+- **Webpack** - Module bundler with custom configuration
+- **Babel** - Modern JavaScript transpilation
+- **ESLint** - Code quality linter
+- **Prettier** - Automatic code formatting
+- **Stylelint** - CSS/SCSS linter
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### API
+- **CoinGecko API** - Real-time cryptocurrency data
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Quick Start
 
-### `yarn eject`
+### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Node.js (version 14 or higher)
+- npm or yarn
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Proffett/cryptoFolio.git
+   cd cryptoFolio
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-## Learn More
+3. **Start development server**
+   ```bash
+   npm start
+   # or
+   yarn start
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. **Open browser**
+   
+   Application will be available at [http://localhost:3000](http://localhost:3000)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Production Build
 
-### Code Splitting
+```bash
+npm run build
+# or
+yarn build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Built application will be in the `build/` folder.
 
-### Analyzing the Bundle Size
+## 📁 Project Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```
+cryptoFolio/
+├── public/                 # Static files
+├── src/
+│   ├── App/               # Main application component
+│   ├── components/        # Reusable components
+│   ├── store/            # Redux store and reducers
+│   ├── styles/           # Global SCSS styles
+│   ├── mock/             # Mock data for development
+│   └── index.js          # Application entry point
+├── .eslintrc.js          # ESLint configuration
+├── .prettierrc.js        # Prettier configuration
+├── .stylelintrc.js       # Stylelint configuration
+├── webpack.config.js     # Custom Webpack configuration
+├── babel.config.js       # Babel configuration
+└── package.json          # Dependencies and scripts
+```
 
-### Making a Progressive Web App
+## 🎯 Functionality
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Portfolio Management
+- Add new cryptocurrencies to portfolio
+- Specify coin amount and purchase price
+- Edit and remove positions
+- Group by asset types
 
-### Advanced Configuration
+### Analytics & Reports
+- Real-time total portfolio value
+- Profit/loss per position
+- Percentage change in value
+- Asset distribution in portfolio
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### User Interface
+- Responsive design for all devices
+- Dark and light themes (planned)
+- Intuitive navigation
+- Quick cryptocurrency search
 
-### Deployment
+## 🔧 Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Environment Variables
 
-### `yarn build` fails to minify
+Create `.env` file in project root:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```env
+REACT_APP_API_URL=https://api.coingecko.com/api/v3
+REACT_APP_API_KEY=your_api_key_here
+```
+
+### API Setup
+
+Application uses public CoinGecko API. For production, it's recommended to get an API key for increased rate limits.
+
+## 📱 Screenshots
+
+*Screenshots will be added after creating live demo*
+
+## 🚧 Development Roadmap
+
+### Upcoming Updates
+- [ ] Add price change charts
+- [ ] Notifications for significant price changes
+- [ ] Export data to CSV/Excel
+- [ ] Multi-currency support (USD, EUR, RUB)
+
+### Long-term Plans
+- [ ] Mobile app (React Native)
+- [ ] Exchange integration for automatic import
+- [ ] Social features (portfolio comparison)
+- [ ] Advanced analytics and predictions
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to suggest improvements.
+
+### How to contribute:
+
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+## 👨‍💻 Author
+
+**Evgeny Sterkhov**
+- GitHub: [@Proffett](https://github.com/Proffett)
+- Email: montana-work@yandex.ru
+- Telegram: @proffett
+
+## 🙏 Acknowledgments
+
+- [CoinGecko](https://www.coingecko.com/) for providing the API
+- [React](https://reactjs.org/) team for the excellent library
+- Developer community for inspiration and support
+
+---
+
+<div align="center">
+
+**⭐ Star this repo if you found it helpful!**
+
+</div>
+
