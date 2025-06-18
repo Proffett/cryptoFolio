@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, ButtonGroup, Checkbox, FormControlLabel, FormGroup } from '@material-ui/core';
+import { Button, ButtonGroup, Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import { BaseModal, ModalCloseTarget } from 'react-spring-modal';
 
 import { basicCoins } from '../../mock/initialData';
 import { fetchAsyncCryptoData, setCoins, setModal } from '../../store/reducer';
+import { AppState, LocalStorageData } from '../../types';
 
-// import { cnModal } from './cn-Modal';
-// import './index.scss';
-
-const staticStyles = {
+const staticStyles: React.CSSProperties = {
   display: 'flex',
   flexDirection: 'column',
   position: 'absolute',
@@ -25,13 +23,13 @@ const staticStyles = {
   transition: 'all 5s ease-out',
 };
 
-export const Modal = () => {
+export function Modal(): JSX.Element {
   const dispatch = useDispatch();
-  const [favoriteCoins, setFavoriteCoins] = useState([]);
-  const isOpen = useSelector((state) => state.modal);
-  const selectCoins = useSelector((state) => state.coins);
+  const [favoriteCoins, setFavoriteCoins] = useState<string[]>([]);
+  const isOpen = useSelector((state: AppState) => state.modal);
+  const selectCoins = useSelector((state: AppState) => state.coins);
 
-  const [basicBalance, setBasicBalance] = useState({
+  const [basicBalance, setBasicBalance] = useState<{ [key: string]: number }>({
     BTC: 0,
     ETH: 0,
     XRP: 0,
@@ -46,35 +44,31 @@ export const Modal = () => {
     SOL: 0,
   });
 
-  // const [activeStyle, setActiveStyle] = useState(false);
-  // const style = { webkitTransform: 'translateX(0%)', transform: 'translateX(0%)' };
-
-  let getClientFavoritesCoins = null;
-  // let getClientBalance = null;
+  let getClientFavoritesCoins: string[] | null = null;
 
   if (localStorage.favorites) {
     getClientFavoritesCoins = JSON.parse(localStorage.favorites);
-    // getClientBalance = JSON.parse(localStorage.balance);
   }
 
   useEffect(() => {
     if (localStorage.favorites) {
       setFavoriteCoins([...JSON.parse(localStorage.favorites)]);
-
-      setBasicBalance({ ...JSON.parse(localStorage.balance) });
+      setBasicBalance({ ...JSON.parse(localStorage.balance || '{}') });
+    } else {
+      setFavoriteCoins([...selectCoins]);
     }
-    // set initial coins
-    else setFavoriteCoins([...selectCoins]);
   }, [selectCoins]);
 
-  const handleCheckBox = (event, coin) => {
+  const handleCheckBox = (event: React.ChangeEvent<HTMLInputElement>, coin: string): void => {
     if (event.target.checked) {
       setFavoriteCoins((state) => [...state, ...basicCoins.filter((item) => item === coin)]);
-    } else setFavoriteCoins((state) => [...state.filter((item) => item !== coin)]);
+    } else {
+      setFavoriteCoins((state) => [...state.filter((item) => item !== coin)]);
+    }
     console.log(favoriteCoins);
   };
 
-  const handleCoinInput = (coin, event) => {
+  const handleCoinInput = (coin: string, event: React.ChangeEvent<HTMLInputElement>): void => {
     setBasicBalance((prevState) => ({ ...prevState, [coin]: +event.target.value }));
   };
 
@@ -86,7 +80,7 @@ export const Modal = () => {
         leave: { transform: 'translateX(-100%)' },
       }}
       contentProps={{ style: staticStyles }}
-      isOpen={isOpen}
+      isOpen={isOpen || false}
       onDismiss={() => setModal()}
     >
       <h6>Choose coin(s)</h6>
@@ -132,7 +126,7 @@ export const Modal = () => {
           <ButtonGroup>
             <Button
               variant="outlined"
-              type="primary"
+              type="button"
               className="button_modal"
               onClick={() => {
                 dispatch(setCoins(favoriteCoins));
@@ -147,7 +141,7 @@ export const Modal = () => {
 
             <Button
               variant="outlined"
-              type="primary"
+              type="button"
               className="button_modal"
               onClick={() => {
                 dispatch(setModal());
@@ -160,4 +154,4 @@ export const Modal = () => {
       </FormGroup>
     </BaseModal>
   );
-};
+}

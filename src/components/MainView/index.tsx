@@ -1,30 +1,33 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { fetchAsyncCryptoData } from '../../store/reducer';
 import { SymbolToFullName } from '../../mock/initialData';
 import Header from '../Header';
 import { cnMainView } from './cn-MainView';
 import './index.scss';
+import { AppState, CoinData } from '../../types';
 
-const MainView = () => {
+function MainView(): JSX.Element {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const walletSummary = useSelector((state) => state.summary);
-  const coins = useSelector((state) => state.coins);
-  const walletProfit = useSelector((state) => state.profit);
-  const data = useSelector((state) => state.cryptoData);
-  const isError = useSelector((state) => state.isError);
+  const navigate = useNavigate();
+  const walletSummary = useSelector((state: AppState) => state.summary);
+  const coins = useSelector((state: AppState) => state.coins);
+  const walletProfit = useSelector((state: AppState) => state.profit);
+  const data = useSelector((state: AppState) => state.cryptoData);
+  const isError = useSelector((state: AppState) => state.isError);
 
   useEffect(() => {
     if (localStorage.favorites) {
-      dispatch(fetchAsyncCryptoData(JSON.parse(localStorage.getItem('favorites'))));
-    } else dispatch(fetchAsyncCryptoData(['BTC', 'ETH', 'XRP', 'ADA']));
+      dispatch(fetchAsyncCryptoData(JSON.parse(localStorage.getItem('favorites') || '[]')));
+    } else {
+      dispatch(fetchAsyncCryptoData(['BTC', 'ETH', 'XRP', 'ADA']));
+    }
   }, [dispatch]);
 
-  const handleCoinItem = (target, coin) => {
-    target.focus();
-    history.push(`/${coin}`);
+  const handleCoinItem = (event: React.MouseEvent<HTMLDivElement>, coin: string): void => {
+    event.currentTarget.focus();
+    navigate(`/${coin}`);
   };
 
   console.log('mainView: ', JSON.stringify(coins));
@@ -60,7 +63,7 @@ const MainView = () => {
               </button>
             </>
           ) : (
-            data.map((coin, index) => {
+            data.map((coin: CoinData, index: number) => {
               console.log(coin);
               const key = index + Math.random();
               const coinName = coin[0];
@@ -74,7 +77,7 @@ const MainView = () => {
                   key={key}
                   className={cnMainView('coin-item')}
                   role="menuitem"
-                  onClick={({ target }) => handleCoinItem(target, coinName)}
+                  onClick={(event) => handleCoinItem(event, coinName)}
                   tabIndex={index}
                 >
                   <div className={cnMainView('coin-item-row')}>
@@ -110,6 +113,6 @@ const MainView = () => {
       </main>
     </>
   );
-};
+}
 
 export default MainView;

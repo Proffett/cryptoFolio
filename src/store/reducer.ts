@@ -10,8 +10,9 @@ import {
   SET_COINS,
   SET_MODAL,
 } from './actions';
+import { AppState, Action, CoinData } from '../types';
 
-const defaultState = {
+const defaultState: AppState = {
   cryptoData: [],
   coins: ['BTC', 'ETH', 'XRP', 'ADA'],
   walletSummary: 0,
@@ -21,26 +22,28 @@ const defaultState = {
   chosenCoin: 'BTC',
   chosenCoinData: [],
   history: 'hour',
-  times: 0,
-  values: 0,
+  times: [],
+  values: [],
 };
 
-export default function rootReducer(state = defaultState, action) {
+export default function rootReducer(state: AppState | undefined, action: Action): AppState {
+  const currentState = state || defaultState;
+
   switch (action.type) {
     case ASYNC_FETCH_CRYPTO_DATA:
       return {
-        ...state,
+        ...currentState,
         coins: action.payload,
         isLoading: false,
       };
     case FETCH_CRYPTO_DATA_PENDING:
       return {
-        ...state,
+        ...currentState,
         isLoading: true,
       };
     case FETCH_CRYPTO_SUCCESS:
       return {
-        ...state,
+        ...currentState,
         cryptoData: action.payload.data,
         summary: action.payload.summary.toFixed(2),
         profit: action.payload.profit.toFixed(2),
@@ -48,18 +51,20 @@ export default function rootReducer(state = defaultState, action) {
         isError: false,
       };
     case FETCH_CRYPTO_FAILED:
-      return { ...state, isLoading: false, isError: true };
+      return { ...currentState, isLoading: false, isError: true };
 
     case GET_COIN_DATA:
       return {
-        ...state,
+        ...currentState,
         chosenCoin: action.payload,
-        chosenCoinData: [...state.cryptoData].filter((coin) => coin[0] === action.payload),
+        chosenCoinData: [...currentState.cryptoData].filter(
+          (coin: CoinData) => coin[0] === action.payload,
+        ),
         isLoading: false,
       };
     case GET_CHART:
       return {
-        ...state,
+        ...currentState,
         times: action.payload.times,
         values: action.payload.values,
         history: action.payload.history,
@@ -67,39 +72,48 @@ export default function rootReducer(state = defaultState, action) {
       };
     case SET_CHART:
       return {
-        ...state,
+        ...currentState,
         times: action.payload.times,
         values: action.payload.values,
         isLoading: false,
       };
     case SET_COIN:
       return {
-        ...state,
+        ...currentState,
         chosenCoin: action.payload,
         isLoading: false,
       };
     case SET_COINS:
       return {
-        ...state,
+        ...currentState,
         coins: action.payload,
         isLoading: false,
       };
     case SET_MODAL:
       return {
-        ...state,
-        modal: !state.modal,
+        ...currentState,
+        modal: !currentState.modal,
       };
     default:
-      return state;
+      return currentState;
   }
 }
 
-export const fetchAsyncCryptoData = (payload) => ({ type: ASYNC_FETCH_CRYPTO_DATA, payload });
-export const setCryptoData = (payload) => ({ type: FETCH_CRYPTO_SUCCESS, payload });
-export const getCoinData = (payload) => ({ type: GET_COIN_DATA, payload });
-export const setCoin = (payload) => ({ type: SET_COIN, payload });
-export const getChart = (payload) => ({ type: GET_CHART, payload });
-export const setChart = (payload) => ({ type: SET_CHART, payload });
-export const setError = () => ({ type: FETCH_CRYPTO_FAILED });
-export const setCoins = (payload) => ({ type: SET_COINS, payload });
-export const setModal = () => ({ type: SET_MODAL });
+export const fetchAsyncCryptoData = (payload: string[]): Action => ({
+  type: ASYNC_FETCH_CRYPTO_DATA,
+  payload,
+});
+export const setCryptoData = (payload: any): Action => ({ type: FETCH_CRYPTO_SUCCESS, payload });
+export const getCoinData = (payload: string): Action => ({ type: GET_COIN_DATA, payload });
+export const setCoin = (payload: string): Action => ({ type: SET_COIN, payload });
+export const getChart = (payload: { coin: string; history: string; limit: number }): Action => ({
+  type: GET_CHART,
+  payload,
+});
+export const setChart = (payload: { times: number[]; values: number[] }): Action => ({
+  type: SET_CHART,
+  payload,
+});
+export const setError = (): Action => ({ type: FETCH_CRYPTO_FAILED });
+export const setCoins = (payload: string[]): Action => ({ type: SET_COINS, payload });
+export const setModal = (): Action => ({ type: SET_MODAL });

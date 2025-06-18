@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { fetchAsyncCryptoData, getChart, getCoinData, setCoin } from '../../store/reducer';
 import { SymbolToFullName } from '../../mock/initialData';
 import Header from '../Header';
 import Chart from '../Chart';
 import { cnCoinView } from './cn-CoinView';
 import './index.scss';
+import { AppState, CoinData } from '../../types';
 
-const CoinView = () => {
-  const history = useHistory();
+function CoinView() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { coin } = useParams();
-  const [historyClassActive, setHistoryClassActive] = useState('hour');
-  const [coinClassActive, setCoinClassActive] = useState(coin);
-  const [isLoading, setIsLoading] = useState(true);
-  const coinFullName = SymbolToFullName[coin];
+  const { coin } = useParams<{ coin: string }>();
+  const [historyClassActive, setHistoryClassActive] = useState<string>('hour');
+  const [coinClassActive, setCoinClassActive] = useState<string>(coin || 'BTC');
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const coinFullName = SymbolToFullName[coin || 'BTC'];
 
-  const times = useSelector((state) => state.times);
-  const values = useSelector((state) => state.values);
-  let historyValue = useSelector((state) => state.history);
-  const coinsData = useSelector((state) => state.cryptoData);
-  const chosenCoinData = useSelector((state) => state.chosenCoinData);
+  const times = useSelector((state: AppState) => state.times);
+  const values = useSelector((state: AppState) => state.values);
+  let historyValue = useSelector((state: AppState) => state.history);
+  const coinsData = useSelector((state: AppState) => state.cryptoData);
+  const chosenCoinData = useSelector((state: AppState) => state.chosenCoinData);
 
-  let limit = 60;
   let currentCoinBalance = 0;
   let currentCoinProfit = 0;
 
@@ -31,28 +31,38 @@ const CoinView = () => {
     setIsLoading(true);
 
     if (!chosenCoinData || !coinsData) {
-      dispatch(fetchAsyncCryptoData(coin));
-      dispatch(setCoin(coin));
-      dispatch(getCoinData(coin));
+      dispatch(fetchAsyncCryptoData([coin || 'BTC']));
+      dispatch(setCoin(coin || 'BTC'));
+      dispatch(getCoinData(coin || 'BTC'));
     }
 
-    dispatch(getChart({ coin, history: historyValue, limit }));
+    // Set initial limit based on current history
+    let limit = 60; // default for hour
+    if (historyValue === 'minute') limit = 60;
+    else if (historyValue === 'day') limit = 7;
+
+    dispatch(getChart({ coin: coin || 'BTC', history: historyValue, limit }));
 
     setIsLoading(false);
-  }, [dispatch, coin, limit, historyValue, chosenCoinData, coinsData]);
+  }, [dispatch, coin, historyValue, chosenCoinData, coinsData]);
 
-  const handleCoinItem = (target, chosenCoin) => {
+  const handleCoinItem = (event: React.MouseEvent<HTMLDivElement>, chosenCoin: string): void => {
     setCoinClassActive(chosenCoin);
-    target.focus();
-    return history.push(`/${chosenCoin}`);
+    event.currentTarget.focus();
+    navigate(`/${chosenCoin}`);
   };
-  const handleHistory = (time) => {
+
+  const handleHistory = (time: string): void => {
     historyValue = time;
     setHistoryClassActive(time);
-    if (historyValue === 'day') limit = 24;
-    else limit = 60;
 
-    return dispatch(getChart({ coin, history: time, limit }));
+    // Set correct limit for each time period
+    let limit = 60; // default
+    if (time === 'minute') limit = 60;
+    else if (time === 'hour') limit = 24;
+    else if (time === 'day') limit = 7;
+
+    dispatch(getChart({ coin: coin || 'BTC', history: time, limit }));
   };
 
   return (
@@ -62,14 +72,14 @@ const CoinView = () => {
       {/* carousel */}
       {!isLoading && (
         <div className={cnCoinView('coin-carousel-container')}>
-          {coinsData.map((coinItem, index) => {
+          {coinsData.map((coinItem: CoinData, index: number) => {
             const key = index + Math.random();
             const coinItemName = coinItem[0];
             const coinItemFullName = SymbolToFullName[coinItemName];
             const coinItemBalance = coinItem.balance;
             const coinItemProfit = coinItem.calcProfit;
 
-            if (coinItemName.toLowerCase() === coin.toLowerCase()) {
+            if (coinItemName.toLowerCase() === coin?.toLowerCase()) {
               currentCoinBalance = coinItemBalance;
               currentCoinProfit = coinItemProfit;
             }
@@ -82,7 +92,7 @@ const CoinView = () => {
                     ? cnCoinView('coin-item-list-active')
                     : cnCoinView('coin-item-list')
                 }
-                onClick={({ target }) => handleCoinItem(target, coinItemName)}
+                onClick={(event) => handleCoinItem(event, coinItemName)}
               >
                 <div className={cnCoinView('flex-item')}>
                   <div className={`icon icon-${coinItemName.toLowerCase()}`} />
@@ -105,7 +115,7 @@ const CoinView = () => {
       {/* current coin */}
       <div className={cnCoinView('coin-item-minimal')}>
         <div className={cnCoinView('flex-item')}>
-          <div className={`icon icon-${coin.toLowerCase()}`} />
+          <div className={`icon icon-${coin?.toLowerCase()}`} />
           <div className={cnCoinView('flex-left-column')}>
             <span>{coin}</span>
             <span className="second-color text_secondary">{coinFullName}</span>
@@ -121,11 +131,10 @@ const CoinView = () => {
       {/* chart */}
       <div className={cnCoinView('history-items')}>
         <ul role="presentation">
-          {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
           <li
             tabIndex={-3}
             key="minute"
-            className={historyClassActive === 'minute' ? 'li-active' : null}
+            className={historyClassActive === 'minute' ? 'li-active' : undefined}
             onClick={() => handleHistory('minute')}
           >
             Minutes
@@ -133,7 +142,7 @@ const CoinView = () => {
           <li
             tabIndex={-2}
             key="hour"
-            className={historyClassActive === 'hour' ? 'li-active' : null}
+            className={historyClassActive === 'hour' ? 'li-active' : undefined}
             onClick={() => handleHistory('hour')}
           >
             Hour
@@ -141,7 +150,7 @@ const CoinView = () => {
           <li
             tabIndex={-1}
             key="day"
-            className={historyClassActive === 'day' ? 'li-active' : null}
+            className={historyClassActive === 'day' ? 'li-active' : undefined}
             onClick={() => handleHistory('day')}
             onKeyDown={() => handleHistory('day')}
           >
@@ -154,6 +163,6 @@ const CoinView = () => {
       )}
     </main>
   );
-};
+}
 
 export default CoinView;

@@ -1,11 +1,15 @@
 .MainView {
+  margin: 0 auto;
+
   &__summary-portfolio {
 
     &_daily-changes {
       color: #48a386;
+
       &:before {
         content: '+'
       }
+
       &:after {
         content: "";
       }
@@ -22,6 +26,7 @@
   }
 
   &__coin-item {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     min-height: 150px;
@@ -35,6 +40,7 @@
       flex-direction: column;
       text-align: left;
     }
+
     &_right-column {
       display: flex;
       flex-direction: column;
@@ -53,11 +59,13 @@
     flex-direction: column;
     text-align: left;
   }
+
   &__coin-item_left-column_up {
     display: flex;
     align-items: center;
     text-align: left;
   }
+
   &__coin-item_left-column_margin-left {
     display: flex;
     flex-direction: column;
@@ -70,6 +78,7 @@
     flex-direction: column;
     text-align: right;
   }
+
   &__coin-item_right-column-up {
     display: flex;
     align-items: center;
@@ -78,9 +87,11 @@
 
   &__profit {
     color: #48a386;
+
     &:before {
       content: '+'
     }
+
     &:after {
       content: '%'
     }
@@ -88,9 +99,11 @@
 
   &__loss {
     color: #b23d3d;
+
     &:before {
       content: '-'
     }
+
     &:after {
       content: '%'
     }

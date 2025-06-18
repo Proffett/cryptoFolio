@@ -1,196 +1,110 @@
-# CryptoFolio - Cryptocurrency Portfolio Tracker
+# CryptoFolio
 
-<div align="center">
+A modern cryptocurrency portfolio tracking application built with React 18, TypeScript, Redux Toolkit, and Material-UI 5.
 
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![Webpack](https://img.shields.io/badge/Webpack-8DD6F9?style=for-the-badge&logo=webpack&logoColor=black)
+## 🚀 Features
 
-</div>
+- **Real-time Crypto Tracking**: Monitor cryptocurrency prices and market data
+- **Portfolio Management**: Add and track your cryptocurrency holdings
+- **Interactive Charts**: Visualize price history with Chart.js
+- **Responsive Design**: Modern UI built with Material-UI 5
+- **Redux State Management**: Centralized state management with Redux Toolkit and Redux Saga
+- **TypeScript**: Full type safety across the codebase
 
-## 📖 Overview
+## 🛠 Tech Stack
 
-CryptoFolio is a modern web application for tracking cryptocurrency portfolios with real-time price updates and profit/loss calculations. The application provides users with an intuitive interface for managing their crypto investments and analyzing their performance.
+- **React 18** - Latest React with concurrent features
+- **TypeScript 4.9+** - Static type checking for safer code
+- **Material-UI 5** - Modern component library with emotion-based styling
+- **Redux Toolkit + Redux Saga** - Modern Redux state management and side effects
+- **Chart.js** - Interactive charts and data visualization
+- **React Router v6** - Modern client-side routing
+- **Webpack 5** - Modern bundling with CSS optimization
+- **Sass** - Advanced CSS preprocessing
 
-### ✨ Key Features
+## 📦 Installation
 
-- 📊 **Portfolio Tracking** - Add and manage cryptocurrencies in your portfolio
-- 💰 **Real-time Prices** - Live cryptocurrency data via CoinGecko API
-- 📈 **Profit Analytics** - Automatic profit/loss calculation for each position
-- 📱 **Responsive Design** - Full mobile device support
-- 🎨 **Modern UI** - Intuitive and beautiful interface
-- 💾 **Local Storage** - Portfolio data persistence in browser
-
-## 🛠 Technology Stack
-
-### Frontend
-- **React** - Core library for building user interfaces
-- **Redux** - Application state management
-- **JavaScript (ES6+)** - Primary programming language
-- **SCSS** - CSS preprocessor for styling
-
-### Development Tools
-- **Webpack** - Module bundler with custom configuration
-- **Babel** - Modern JavaScript transpilation
-- **ESLint** - Code quality linter
-- **Prettier** - Automatic code formatting
-- **Stylelint** - CSS/SCSS linter
-
-### API
-- **CoinGecko API** - Real-time cryptocurrency data
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-- Node.js (version 14 or higher)
-- npm or yarn
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Proffett/cryptoFolio.git
-   cd cryptoFolio
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm start
-   # or
-   yarn start
-   ```
-
-4. **Open browser**
-   
-   Application will be available at [http://localhost:3000](http://localhost:3000)
-
-### Production Build
-
+1. Clone the repository:
 ```bash
-npm run build
-# or
-yarn build
+git clone <repository-url>
+cd cryptoFolio
 ```
 
-Built application will be in the `build/` folder.
-
-## 📁 Project Structure
-
-```
-cryptoFolio/
-├── public/                 # Static files
-├── src/
-│   ├── App/               # Main application component
-│   ├── components/        # Reusable components
-│   ├── store/            # Redux store and reducers
-│   ├── styles/           # Global SCSS styles
-│   ├── mock/             # Mock data for development
-│   └── index.js          # Application entry point
-├── .eslintrc.js          # ESLint configuration
-├── .prettierrc.js        # Prettier configuration
-├── .stylelintrc.js       # Stylelint configuration
-├── webpack.config.js     # Custom Webpack configuration
-├── babel.config.js       # Babel configuration
-└── package.json          # Dependencies and scripts
+2. Install dependencies:
+```bash
+npm install
 ```
 
-## 🎯 Functionality
-
-### Portfolio Management
-- Add new cryptocurrencies to portfolio
-- Specify coin amount and purchase price
-- Edit and remove positions
-- Group by asset types
-
-### Analytics & Reports
-- Real-time total portfolio value
-- Profit/loss per position
-- Percentage change in value
-- Asset distribution in portfolio
-
-### User Interface
-- Responsive design for all devices
-- Dark and light themes (planned)
-- Intuitive navigation
-- Quick cryptocurrency search
-
-## 🔧 Configuration
-
-### Environment Variables
-
-Create `.env` file in project root:
-
-```env
-REACT_APP_API_URL=https://api.coingecko.com/api/v3
-REACT_APP_API_KEY=your_api_key_here
+3. Start the development server:
+```bash
+npm start
 ```
 
-### API Setup
+The app will be available at [http://localhost:3000](http://localhost:3000)
 
-Application uses public CoinGecko API. For production, it's recommended to get an API key for increased rate limits.
+## 🔧 Available Scripts
 
-## 📱 Screenshots
+- `npm start` - Runs the app in development mode
+- `npm run build` - Builds the app for production
+- `npm test` - Launches the test runner
+- `npm eject` - Ejects from Create React App (one-way operation)
 
-*Screenshots will be added after creating live demo*
+## 🎨 UI Components
 
-## 🚧 Development Roadmap
+The application uses Material-UI 5 components:
+- **Modal**: Custom coin selection and balance management
+- **Charts**: Interactive price charts with Chart.js
+- **Responsive Layout**: Mobile-friendly design
 
-### Upcoming Updates
-- [ ] Add price change charts
-- [ ] Notifications for significant price changes
-- [ ] Export data to CSV/Excel
-- [ ] Multi-currency support (USD, EUR, RUB)
+## 📊 State Management
 
-### Long-term Plans
-- [ ] Mobile app (React Native)
-- [ ] Exchange integration for automatic import
-- [ ] Social features (portfolio comparison)
-- [ ] Advanced analytics and predictions
+- **Redux Toolkit**: Modern Redux state management
+- **Redux Saga**: Handles async operations and side effects
+- **Local Storage**: Persists user preferences and portfolio data
+
+## 🛡️ TypeScript
+
+- All source code is written in TypeScript for type safety and better developer experience.
+- Custom types are defined in `src/types/`.
+- TypeScript configuration is in `tsconfig.json`.
+
+## 🔄 Recent Updates
+
+### TypeScript & Redux Toolkit Migration (Latest)
+- ✅ Migrated the entire codebase to TypeScript
+- ✅ Adopted Redux Toolkit for modern Redux patterns
+- ✅ Updated all Redux logic and types
+- ✅ Refactored for React Router v6 (replaced `Switch`/`useHistory` with `Routes`/`useNavigate`)
+- ✅ Removed deprecated/legacy packages and fixed all critical dependency issues
+- ✅ Fixed all TypeScript and linter errors
+
+### Previous Key Changes
+- Upgraded to Material-UI 5 and React 18
+- Updated Chart.js configuration for v4+
+- Improved Webpack configuration for modern CSS optimization
+
+## 🚨 Known Issues
+
+- Some peer dependency warnings (non-blocking)
+- SCSS compilation warnings (resolved with sass package)
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to suggest improvements.
-
-### How to contribute:
-
 1. Fork the repository
-2. Create feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Open Pull Request
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
 ## 📄 License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-**Evgeny Sterkhov**
-- GitHub: [@Proffett](https://github.com/Proffett)
-- Email: montana-work@yandex.ru
-- Telegram: @proffett
-
-## 🙏 Acknowledgments
-
-- [CoinGecko](https://www.coingecko.com/) for providing the API
-- [React](https://reactjs.org/) team for the excellent library
-- Developer community for inspiration and support
+Evgeny <monatana-work@yandex.ru>
 
 ---
 
-<div align="center">
-
-**⭐ Star this repo if you found it helpful!**
-
-</div>
+**Note**: This project was originally bootstrapped with Create React App and has been significantly enhanced with TypeScript, Redux Toolkit, and modern tooling.
 

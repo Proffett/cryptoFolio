@@ -8,24 +8,19 @@ import LeftArrowSvg from '../UI/svg/LeftArrowSvg';
 import './index.scss';
 import { Modal } from '../Modal';
 import { setModal } from '../../store/reducer';
+import { HeaderProps, AppState } from '../../types';
 
-// eslint-disable-next-line react/prop-types
-const Header = ({ mainScreen }) => {
+function Header({ mainScreen }: HeaderProps): JSX.Element {
   const dispatch = useDispatch();
-  const isModal = useSelector((state) => state.modal);
-  // eslint-disable-next-line no-shadow
-  // const props = useSpring({ to: { 'translateX(-100%)' }, from: { 'translateX(0%)' } });
+  const isModal = useSelector((state: AppState) => state.modal);
 
   return (
     <>
-      {/* eslint-disable-next-line react/jsx-pascal-case */}
-
       {isModal && <Modal />}
 
       <div className={cnHeader()}>
         {mainScreen ? (
           <>
-            {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
             <div onClick={() => dispatch(setModal())}>
               <LoupSvg />
             </div>
@@ -39,6 +34,6 @@ const Header = ({ mainScreen }) => {
       </div>
     </>
   );
-};
+}
 
 export default Header;

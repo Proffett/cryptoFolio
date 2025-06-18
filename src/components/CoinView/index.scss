@@ -23,6 +23,7 @@
   }
 
   &__coin-item-list {
+    cursor: pointer;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -55,7 +56,8 @@
     display: flex;
   }
 
-  &__history-items ul > li {
+  &__history-items ul>li {
+    cursor: pointer;
     list-style: none;
     margin-left: 7px;
     font-size: 12px;
@@ -66,41 +68,53 @@
     border-radius: 3px;
   }
 
-  &__history-items ul > li:active {
+  &__history-items ul>li:active {
     background: rgba(187, 187, 187, 0.18);
   }
 
-  &__history-items ul > li.li-active {
+  &__history-items ul>li.li-active {
     background: rgba(187, 187, 187, 0.18);
   }
 
   &__flex-item {
-    display: flex; align-items: center;
+    display: flex;
+    align-items: center;
   }
 
   &__flex-left-column {
-    display: flex; flex-direction: column; text-align: left; margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 5px;
   }
 
   &__flex-right-column {
-    display: flex; flex-direction: column; text-align: right; margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    margin-right: 5px;
   }
 
   &__green {
     color: #48a386;
   }
+
   &__green:before {
     content: '+'
   }
+
   &__green:after {
     content: '%'
   }
+
   &__green-portfolio {
     color: #48a386;
   }
+
   &__green-portfolio:before {
     content: '+'
   }
+
   &__green-portfolio:after {
     content: "";
   }
@@ -108,18 +122,23 @@
   &__red {
     color: #b23d3d;
   }
+
   &__red:before {
     content: '-'
   }
+
   &__red:after {
     content: '%'
   }
+
   &__red-portfolio {
     color: #b13d3e;
   }
+
   &__red-portfolio:before {
     content: '-'
   }
+
   &__red-portfolio:after {
     content: '&#8593';
   }

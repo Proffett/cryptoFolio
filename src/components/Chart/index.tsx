@@ -1,9 +1,21 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { ChartProps, ChartData, ChartOptions } from '../../types';
 
-// eslint-disable-next-line react/prop-types
-const Chart = ({ times, values, history }) => {
-  const data = {
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+
+function Chart({ times, values, history }: ChartProps): JSX.Element {
+  const data: ChartData = {
     labels: times,
     datasets: [
       {
@@ -16,7 +28,8 @@ const Chart = ({ times, values, history }) => {
       },
     ],
   };
-  const options = {
+
+  const options: ChartOptions = {
     scales: {
       y: {
         beginAtZero: false,
@@ -25,6 +38,6 @@ const Chart = ({ times, values, history }) => {
   };
 
   return <Line data={data} options={options} id="coinChart" width="400" height="400" />;
-};
+}
 
 export default Chart;
