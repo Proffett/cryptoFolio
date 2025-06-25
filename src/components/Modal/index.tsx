@@ -1,29 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, ButtonGroup, Checkbox, FormControlLabel, FormGroup } from '@mui/material';
-import { BaseModal, ModalCloseTarget } from 'react-spring-modal';
+import { 
+  Button,
+  Checkbox, 
+  FormControlLabel, 
+  FormGroup,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  Box
+} from '@mui/material';
 
-import { basicCoins } from '../../mock/initialData';
-import { fetchAsyncCryptoData, setCoins, setModal } from '../../store/reducer';
-import { AppState, LocalStorageData } from '../../types';
+import { basicCoins } from '@/mock/initialData.ts';
+import { fetchAsyncCryptoData, setCoins, setModal } from '@/store/reducer.ts';
+import { AppState } from '@/types';
 
-const staticStyles: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  alignItems: 'center',
-  fontSize: '25px',
-  zIndex: '999',
-  height: '100%',
-  width: '100%',
-  textAlign: 'center',
-  background: '#0000009e',
-  transition: 'all 5s ease-out',
-};
-
-export function Modal(): JSX.Element {
+export function Modal() {
   const dispatch = useDispatch();
   const [favoriteCoins, setFavoriteCoins] = useState<string[]>([]);
   const isOpen = useSelector((state: AppState) => state.modal);
@@ -43,12 +37,6 @@ export function Modal(): JSX.Element {
     XMR: 0,
     SOL: 0,
   });
-
-  let getClientFavoritesCoins: string[] | null = null;
-
-  if (localStorage.favorites) {
-    getClientFavoritesCoins = JSON.parse(localStorage.favorites);
-  }
 
   useEffect(() => {
     if (localStorage.favorites) {
@@ -73,85 +61,88 @@ export function Modal(): JSX.Element {
   };
 
   return (
-    <BaseModal
-      contentTransition={{
-        from: { transform: 'translateX(-100%)' },
-        enter: { transform: 'translateX(0)' },
-        leave: { transform: 'translateX(-100%)' },
+    <Dialog
+      open={isOpen || false}
+      onClose={() => dispatch(setModal())}
+      maxWidth="sm"
+      fullWidth
+      PaperProps={{
+        sx: {
+          backgroundColor: '#1d1e25',
+          color: '#fff',
+        },
       }}
-      contentProps={{ style: staticStyles }}
-      isOpen={isOpen || false}
-      onDismiss={() => setModal()}
     >
-      <h6>Choose coin(s)</h6>
-      <FormGroup>
-        {getClientFavoritesCoins
-          ? basicCoins.map((coin) => (
-              <div key={coin}>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      sx={{ color: '#fff' }}
-                      checked={favoriteCoins.includes(coin)}
-                      onChange={(event) => handleCheckBox(event, coin)}
-                    />
-                  }
-                  label={coin}
-                />
-                <input
-                  value={basicBalance[coin]}
-                  onChange={(event) => handleCoinInput(coin, event)}
-                />
-              </div>
-            ))
-          : basicCoins.map((coin) => (
-              <div key={coin}>
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      sx={{ color: '#fff' }}
-                      checked={favoriteCoins.includes(coin)}
-                      onChange={(event) => handleCheckBox(event, coin)}
-                    />
-                  }
-                  label={coin}
-                />
-                <input
-                  value={basicBalance[coin]}
-                  onChange={(event) => handleCoinInput(coin, event)}
-                />
-              </div>
-            ))}
-        <ModalCloseTarget>
-          <ButtonGroup>
-            <Button
-              variant="outlined"
-              type="button"
-              className="button_modal"
-              onClick={() => {
-                dispatch(setCoins(favoriteCoins));
-                dispatch(fetchAsyncCryptoData(favoriteCoins));
-                localStorage.setItem('favorites', JSON.stringify(Object.values(favoriteCoins)));
-                localStorage.setItem('balance', JSON.stringify(basicBalance));
-                dispatch(setModal());
-              }}
-            >
-              change
-            </Button>
-
-            <Button
-              variant="outlined"
-              type="button"
-              className="button_modal"
-              onClick={() => {
-                dispatch(setModal());
-              }}
-            >
-              cancel
-            </Button>
-          </ButtonGroup>
-        </ModalCloseTarget>
-      </FormGroup>
-    </BaseModal>
+      <DialogTitle sx={{ color: '#fff' }}>Choose Coins</DialogTitle>
+      <DialogContent>
+        <FormGroup>
+          {basicCoins.map((coin) => (
+            <Box key={coin} sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    sx={{ color: '#fff' }}
+                    checked={favoriteCoins.includes(coin)}
+                    onChange={(event) => handleCheckBox(event, coin)}
+                  />
+                }
+                label={coin}
+                sx={{ color: '#fff', minWidth: '120px' }}
+              />
+              <TextField
+                type="number"
+                value={basicBalance[coin]}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleCoinInput(coin, event)}
+                size="small"
+                sx={{
+                  ml: 2,
+                  '& .MuiOutlinedInput-root': {
+                    color: '#fff',
+                    '& fieldset': {
+                      borderColor: '#fff',
+                    },
+                    '&:hover fieldset': {
+                      borderColor: '#fff',
+                    },
+                    '&.Mui-focused fieldset': {
+                      borderColor: '#fff',
+                    },
+                  },
+                }}
+              />
+            </Box>
+          ))}
+        </FormGroup>
+      </DialogContent>
+      <DialogActions>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            // First save to localStorage
+            localStorage.setItem('favorites', JSON.stringify(favoriteCoins));
+            localStorage.setItem('balance', JSON.stringify(basicBalance));
+            
+            // Update coins in state
+            dispatch(setCoins(favoriteCoins));
+            
+            // Fetch fresh data with new coins and balances
+            dispatch(fetchAsyncCryptoData(favoriteCoins));
+            
+            // Close modal
+            dispatch(setModal());
+          }}
+          sx={{ color: '#fff', borderColor: '#fff' }}
+        >
+          Save Changes
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={() => dispatch(setModal())}
+          sx={{ color: '#fff', borderColor: '#fff' }}
+        >
+          Cancel
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 }

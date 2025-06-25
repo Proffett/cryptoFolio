@@ -10,7 +10,7 @@ import {
   SET_COINS,
   SET_MODAL,
 } from './actions';
-import { AppState, Action, CoinData } from '../types';
+import { AppState, Action, CoinData } from '@/types';
 
 const defaultState: AppState = {
   cryptoData: [],
@@ -39,7 +39,7 @@ export default function rootReducer(state: AppState | undefined, action: Action)
     case FETCH_CRYPTO_DATA_PENDING:
       return {
         ...currentState,
-        isLoading: true,
+        // isLoading: true,
       };
     case FETCH_CRYPTO_SUCCESS:
       return {

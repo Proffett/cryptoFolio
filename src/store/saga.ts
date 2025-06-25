@@ -3,10 +3,27 @@ import {
   ASYNC_FETCH_CRYPTO_DATA,
   FETCH_CRYPTO_SUCCESS,
   FETCH_CRYPTO_FAILED,
+  FETCH_CRYPTO_DATA_PENDING,
   GET_CHART,
   SET_CHART,
 } from './actions';
-import { CryptoApiResponse, CoinData } from '../types';
+import { CryptoApiResponse, CoinData } from '@/types';
+
+// Mock price data for different coins
+const mockPrices: { [key: string]: number } = {
+  BTC: 45000,
+  ETH: 3000,
+  XRP: 0.5,
+  ADA: 1.2,
+  BSC: 320,
+  LTC: 180,
+  THETA: 2.5,
+  XLM: 0.35,
+  TRX: 0.08,
+  DOGE: 0.15,
+  XMR: 280,
+  SOL: 95,
+};
 
 // Mock API call - replace with actual API
 function* fetchCryptoData(action: {
@@ -14,46 +31,42 @@ function* fetchCryptoData(action: {
   payload: string[];
 }): Generator<any, void, CryptoApiResponse> {
   try {
-    console.log('fetchCryptoData saga called with payload:', action.payload);
+    // Set loading state
+    yield put({ type: FETCH_CRYPTO_DATA_PENDING });
+
+    // Get balance from localStorage (fresh read each time)
+    const savedBalance = localStorage.getItem('balance');
+    const balanceData = savedBalance ? JSON.parse(savedBalance) : {};
 
     // Simulate API call
     const response: CryptoApiResponse = yield call(
       () =>
         new Promise<CryptoApiResponse>((resolve) => {
           setTimeout(() => {
+            // Generate data for each requested coin
+            const data: CoinData[] = action.payload.map((coinSymbol) => {
+              const price = mockPrices[coinSymbol] || 1;
+              const balance = balanceData[coinSymbol] || 0;
+              const calcValue = price * balance;
+              const calcProfit = calcValue * 0.1; // 10% mock profit
+
+              return {
+                0: coinSymbol,
+                1: { USD: price },
+                balance: balance,
+                calcValue: Number(calcValue.toFixed(2)),
+                calcProfit: Number(calcProfit.toFixed(2)),
+              } as CoinData;
+            });
+
+            // Calculate totals
+            const summary = data.reduce((total, coin) => total + coin.calcValue, 0);
+            const profit = data.reduce((total, coin) => total + coin.calcProfit, 0);
+
             resolve({
-              data: [
-                {
-                  0: 'BTC',
-                  1: { USD: 45000 },
-                  balance: 1.5,
-                  calcValue: 67500,
-                  calcProfit: 22500,
-                } as CoinData,
-                {
-                  0: 'ETH',
-                  1: { USD: 3000 },
-                  balance: 10,
-                  calcValue: 30000,
-                  calcProfit: 5000,
-                } as CoinData,
-                {
-                  0: 'XRP',
-                  1: { USD: 0.5 },
-                  balance: 1000,
-                  calcValue: 500,
-                  calcProfit: 100,
-                } as CoinData,
-                {
-                  0: 'ADA',
-                  1: { USD: 1.2 },
-                  balance: 500,
-                  calcValue: 600,
-                  calcProfit: 50,
-                } as CoinData,
-              ],
-              summary: 103100,
-              profit: 23050,
+              data,
+              summary,
+              profit,
             });
           }, 1000);
         }),
