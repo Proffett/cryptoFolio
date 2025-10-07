@@ -134,7 +134,9 @@ function CoinView() {
         </ul>
       </div>
       {!isLoading && chartData && (
-        <Chart times={chartData.times} values={chartData.values} history={historyClassActive} />
+        <div className={cnCoinView('chart-container')}>
+          <Chart times={chartData.times} values={chartData.values} history={historyClassActive} />
+        </div>
       )}
     </main>
   );

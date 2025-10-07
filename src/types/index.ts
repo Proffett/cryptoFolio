@@ -64,7 +64,7 @@ export interface CryptoApiResponse {
 
 // Chart Data Types
 export interface ChartData {
-  labels: number[];
+  labels: string[] | number[];
   datasets: {
     label: string;
     data: number[];
@@ -76,9 +76,24 @@ export interface ChartData {
 }
 
 export interface ChartOptions {
-  scales: {
-    y: {
-      beginAtZero: boolean;
+  scales?: {
+    y?: {
+      beginAtZero?: boolean;
+    };
+    x?: {
+      ticks?: {
+        maxRotation?: number;
+        minRotation?: number;
+        autoSkip?: boolean;
+        maxTicksLimit?: number;
+      };
+    };
+  };
+  plugins?: {
+    tooltip?: {
+      callbacks?: {
+        title?: (context: any[]) => string;
+      };
     };
   };
 }

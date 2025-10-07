@@ -142,4 +142,12 @@
   &__red-portfolio:after {
     content: '&#8593';
   }
+
+  &__chart-container {
+    height: 400px;
+    width: 100%;
+    position: relative;
+    margin-top: 20px;
+    padding: 0 15px;
+  }
 }
