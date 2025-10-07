@@ -69,7 +69,11 @@ Preferred communication style: Simple, everyday language.
 - **Pros**: Highly customizable, performant, extensive chart types
 - **Cons**: Imperative API requires wrapper for React integration
 
-**Implementation**: Line charts display price trends over configurable time periods (minute, hour, day)
+**Implementation**: Line charts display price trends over configurable time periods with formatted timestamps:
+- Minute view: Time format (HH:MM) - e.g., "16:30"
+- Hour view: Date and time format (MM/DD, HH:MM) - e.g., "10/01, 15:02"
+- Day view: Date format (MM/DD) - e.g., "10/01"
+- Includes Filler plugin for area fill, responsive layout with fixed container height
 
 ### Styling Architecture
 
