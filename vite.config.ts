@@ -17,10 +17,11 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 5000,
     strictPort: true,
+    allowedHosts: ['8608f63d-f434-4900-98f5-b05b051032ba-00-lqewf1ddhani.janeway.replit.dev']
   },
   preview: {
     host: '0.0.0.0',
-    port: 5000,
+    port: 3000,
     strictPort: true,
   },
 });
