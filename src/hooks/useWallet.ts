@@ -34,6 +34,8 @@ export function useWallet() {
       const accounts = await provider.send('eth_requestAccounts', []);
       const network = await provider.getNetwork();
 
+      localStorage.removeItem('walletManuallyDisconnected');
+
       setWalletState({
         account: accounts[0],
         chainId: `0x${network.chainId.toString(16)}`,
@@ -52,6 +54,8 @@ export function useWallet() {
   }, []);
 
   const disconnect = useCallback(() => {
+    localStorage.setItem('walletManuallyDisconnected', 'true');
+    
     setWalletState({
       account: null,
       chainId: null,
@@ -89,6 +93,12 @@ export function useWallet() {
     if (!window.ethereum) return;
 
     const checkExistingConnection = async () => {
+      const wasManuallyDisconnected = localStorage.getItem('walletManuallyDisconnected') === 'true';
+      
+      if (wasManuallyDisconnected) {
+        return;
+      }
+
       try {
         const provider = new ethers.BrowserProvider(window.ethereum);
         const accounts = await provider.send('eth_accounts', []);
