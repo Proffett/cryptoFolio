@@ -1,50 +1,46 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { fetchAsyncCryptoData, getChart, getCoinData, setCoin } from '../../store/reducer';
+import { useCryptoPortfolio, useChartData } from '../../hooks/useCryptoData';
+import { useFavorites } from '../../hooks/useUIState';
+import { useWallet } from '../../hooks/useWallet';
 import { SymbolToFullName } from '../../mock/initialData';
 import Header from '../Header';
 import Chart from '../Chart';
 import { cnCoinView } from './cn-CoinView';
 import './index.scss';
-import { AppState, CoinData } from '../../types';
+import { CoinData } from '../../types';
 
 function CoinView() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { coin } = useParams<{ coin: string }>();
   const [historyClassActive, setHistoryClassActive] = useState<string>('hour');
   const [coinClassActive, setCoinClassActive] = useState<string>(coin || 'BTC');
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const coinFullName = SymbolToFullName[coin || 'BTC'];
 
-  const times = useSelector((state: AppState) => state.times);
-  const values = useSelector((state: AppState) => state.values);
-  let historyValue = useSelector((state: AppState) => state.history);
-  const coinsData = useSelector((state: AppState) => state.cryptoData);
-  const chosenCoinData = useSelector((state: AppState) => state.chosenCoinData);
+  const { favorites } = useFavorites();
+  const { account } = useWallet();
+  const { data: coinsData, isLoading: isPortfolioLoading } = useCryptoPortfolio(favorites, account);
+
+  let limit = 60;
+  if (historyClassActive === 'minute') limit = 60;
+  else if (historyClassActive === 'hour') limit = 24;
+  else if (historyClassActive === 'day') limit = 7;
+
+  const { data: chartData, isLoading: isChartLoading } = useChartData(coin || 'BTC', historyClassActive, limit);
+
+  const isLoading = isPortfolioLoading || isChartLoading;
 
   let currentCoinBalance = 0;
   let currentCoinProfit = 0;
 
-  useEffect(() => {
-    setIsLoading(true);
+  const currentCoinData = coinsData.find((coinItem: CoinData) => 
+    coinItem[0].toLowerCase() === coin?.toLowerCase()
+  );
 
-    if (!chosenCoinData || !coinsData) {
-      dispatch(fetchAsyncCryptoData([coin || 'BTC']));
-      dispatch(setCoin(coin || 'BTC'));
-      dispatch(getCoinData(coin || 'BTC'));
-    }
-
-    // Set initial limit based on current history
-    let limit = 60; // default for hour
-    if (historyValue === 'minute') limit = 60;
-    else if (historyValue === 'day') limit = 7;
-
-    dispatch(getChart({ coin: coin || 'BTC', history: historyValue, limit }));
-
-    setIsLoading(false);
-  }, [dispatch, coin, historyValue, chosenCoinData, coinsData]);
+  if (currentCoinData) {
+    currentCoinBalance = currentCoinData.balance;
+    currentCoinProfit = currentCoinData.calcProfit;
+  }
 
   const handleCoinItem = (event: React.MouseEvent<HTMLDivElement>, chosenCoin: string): void => {
     setCoinClassActive(chosenCoin);
@@ -53,24 +49,14 @@ function CoinView() {
   };
 
   const handleHistory = (time: string): void => {
-    historyValue = time;
     setHistoryClassActive(time);
-
-    // Set correct limit for each time period
-    let limit = 60; // default
-    if (time === 'minute') limit = 60;
-    else if (time === 'hour') limit = 24;
-    else if (time === 'day') limit = 7;
-
-    dispatch(getChart({ coin: coin || 'BTC', history: time, limit }));
   };
 
   return (
     <main className={cnCoinView()}>
       <Header />
 
-      {/* carousel */}
-      {!isLoading && (
+      {!isPortfolioLoading && (
         <div className={cnCoinView('coin-carousel-container')}>
           {coinsData.map((coinItem: CoinData, index: number) => {
             const key = index + Math.random();
@@ -79,10 +65,6 @@ function CoinView() {
             const coinItemBalance = coinItem.balance;
             const coinItemProfit = coinItem.calcProfit;
 
-            if (coinItemName.toLowerCase() === coin?.toLowerCase()) {
-              currentCoinBalance = coinItemBalance;
-              currentCoinProfit = coinItemProfit;
-            }
             return (
               <div
                 role="main"
@@ -112,7 +94,6 @@ function CoinView() {
         </div>
       )}
 
-      {/* current coin */}
       <div className={cnCoinView('coin-item-minimal')}>
         <div className={cnCoinView('flex-item')}>
           <div className={`icon icon-${coin?.toLowerCase()}`} />
@@ -128,7 +109,6 @@ function CoinView() {
         </div>
       </div>
 
-      {/* chart */}
       <div className={cnCoinView('history-items')}>
         <ul role="presentation">
           <li
@@ -158,8 +138,8 @@ function CoinView() {
           </li>
         </ul>
       </div>
-      {!isLoading && times && values && (
-        <Chart times={times} values={values} history={historyValue} />
+      {!isLoading && chartData && (
+        <Chart times={chartData.times} values={chartData.values} history={historyClassActive} />
       )}
     </main>
   );

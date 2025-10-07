@@ -89,3 +89,24 @@ export function useCryptoPortfolio(coinSymbols: string[], walletAddress: string 
     isRealMode,
   };
 }
+
+export function useChartData(coin: string, history: string, limit: number) {
+  return useQuery({
+    queryKey: ['chart', coin, history, limit],
+    queryFn: () => {
+      const times: number[] = [];
+      const values: number[] = [];
+      const basePrice = Math.random() * 1000 + 100;
+
+      for (let i = 0; i < limit; i++) {
+        const timestamp = Date.now() - (limit - i) * (history === 'minute' ? 60000 : history === 'hour' ? 3600000 : 86400000);
+        times.push(timestamp);
+        values.push(basePrice + Math.random() * 100 - 50);
+      }
+
+      return { times, values };
+    },
+    staleTime: 30000,
+    refetchInterval: 60000,
+  });
+}
