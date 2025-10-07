@@ -13,7 +13,7 @@ import { CoinData } from '../../types';
 function CoinView() {
   const navigate = useNavigate();
   const { coin } = useParams<{ coin: string }>();
-  const [historyClassActive, setHistoryClassActive] = useState<string>('hour');
+  const [historyClassActive, setHistoryClassActive] = useState<'minute' | 'hour' | 'day'>('hour');
   const [coinClassActive, setCoinClassActive] = useState<string>(coin || 'BTC');
   const coinFullName = SymbolToFullName[coin || 'BTC'];
 
@@ -21,12 +21,7 @@ function CoinView() {
   const { account } = useWallet();
   const { data: coinsData, isLoading: isPortfolioLoading } = useCryptoPortfolio(favorites, account);
 
-  let limit = 60;
-  if (historyClassActive === 'minute') limit = 60;
-  else if (historyClassActive === 'hour') limit = 24;
-  else if (historyClassActive === 'day') limit = 7;
-
-  const { data: chartData, isLoading: isChartLoading } = useChartData(coin || 'BTC', historyClassActive, limit);
+  const { data: chartData, isLoading: isChartLoading } = useChartData(coin || 'BTC', historyClassActive);
 
   const isLoading = isPortfolioLoading || isChartLoading;
 
@@ -48,7 +43,7 @@ function CoinView() {
     navigate(`/${chosenCoin}`);
   };
 
-  const handleHistory = (time: string): void => {
+  const handleHistory = (time: 'minute' | 'hour' | 'day'): void => {
     setHistoryClassActive(time);
   };
 

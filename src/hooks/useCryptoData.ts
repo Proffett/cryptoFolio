@@ -90,21 +90,27 @@ export function useCryptoPortfolio(coinSymbols: string[], walletAddress: string 
   };
 }
 
-export function useChartData(coin: string, history: string, limit: number) {
+export function useChartData(coin: string, history: 'minute' | 'hour' | 'day') {
   return useQuery({
-    queryKey: ['chart', coin, history, limit],
-    queryFn: () => {
-      const times: number[] = [];
-      const values: number[] = [];
-      const basePrice = Math.random() * 1000 + 100;
+    queryKey: ['chart', coin, history],
+    queryFn: async () => {
+      try {
+        return await priceService.getHistoricalPrices(coin, history);
+      } catch (error) {
+        console.warn('Failed to fetch real chart data, using fallback:', error);
+        const times: number[] = [];
+        const values: number[] = [];
+        const basePrice = Math.random() * 1000 + 100;
+        const limit = history === 'minute' ? 60 : history === 'hour' ? 24 : 7;
 
-      for (let i = 0; i < limit; i++) {
-        const timestamp = Date.now() - (limit - i) * (history === 'minute' ? 60000 : history === 'hour' ? 3600000 : 86400000);
-        times.push(timestamp);
-        values.push(basePrice + Math.random() * 100 - 50);
+        for (let i = 0; i < limit; i++) {
+          const timestamp = Date.now() - (limit - i) * (history === 'minute' ? 60000 : history === 'hour' ? 3600000 : 86400000);
+          times.push(timestamp);
+          values.push(basePrice + Math.random() * 100 - 50);
+        }
+
+        return { times, values };
       }
-
-      return { times, values };
     },
     staleTime: 30000,
     refetchInterval: 60000,

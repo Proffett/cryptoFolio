@@ -74,6 +74,52 @@ class PriceService {
   getCoinGeckoId(symbol: string): string | undefined {
     return COINGECKO_COIN_IDS[symbol];
   }
+
+  async getHistoricalPrices(
+    coinSymbol: string,
+    history: 'minute' | 'hour' | 'day'
+  ): Promise<{ times: number[]; values: number[] }> {
+    try {
+      const coinId = COINGECKO_COIN_IDS[coinSymbol];
+      
+      if (!coinId) {
+        throw new Error(`Unknown coin symbol: ${coinSymbol}`);
+      }
+
+      let days: string;
+
+      if (history === 'minute') {
+        days = '1';
+      } else if (history === 'hour') {
+        days = '7';
+      } else {
+        days = '30';
+      }
+
+      const url = `${this.baseUrl}/coins/${coinId}/market_chart?vs_currency=usd&days=${days}`;
+      
+      const headers: HeadersInit = {};
+      if (this.apiKey) {
+        headers['x-cg-demo-api-key'] = this.apiKey;
+      }
+
+      const response = await fetch(url, { headers });
+
+      if (!response.ok) {
+        throw new Error(`CoinGecko API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      const times: number[] = data.prices?.map((price: [number, number]) => price[0]) || [];
+      const values: number[] = data.prices?.map((price: [number, number]) => price[1]) || [];
+
+      return { times, values };
+    } catch (error) {
+      console.error('Failed to fetch historical prices from CoinGecko:', error);
+      throw error;
+    }
+  }
 }
 
 export const priceService = new PriceService();
