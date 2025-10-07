@@ -38,22 +38,28 @@ Preferred communication style: Simple, everyday language.
 
 ### State Management
 
-**Redux Toolkit 2.3 + Redux Saga 1.3**
-- **Rationale**: Redux Toolkit simplifies Redux boilerplate while Redux Saga handles complex async operations (API calls, data fetching)
-- **Alternative Considered**: React Context + useReducer - rejected due to complexity of side effects management
-- **Pros**: Predictable state updates, excellent DevTools, separation of concerns for side effects
-- **Cons**: Additional complexity, learning curve for saga patterns
+**React Query (TanStack Query) 5.x**
+- **Rationale**: React Query eliminates Redux boilerplate while providing powerful server state management with automatic caching, refetching, and invalidation
+- **Previous Implementation**: Redux Toolkit + Redux Saga - replaced to reduce complexity and eliminate 500+ lines of boilerplate
+- **Pros**: Automatic background refetching, built-in caching, simpler API, type-safe, excellent DevTools
+- **Cons**: Requires understanding of server vs client state separation
 
-**State Structure**:
-- `cryptoData`: Array of coin data with prices and balances
-- `coins`: User's selected favorite coins
-- `chosenCoin`: Currently viewed coin detail
-- Chart data (`times`, `values`) for price history visualization
-- UI states (`isLoading`, `isError`, `modal`)
+**Architecture**: Clean separation between server state and UI state
+- **Server State** (React Query): Real-time cryptocurrency prices, wallet balances, historical chart data from CoinGecko API
+- **UI State** (useState + localStorage): User favorites, modal visibility, selected coin, virtual balances
+
+**Custom Hooks**:
+- `useCryptoPrices`: Fetches live prices for selected cryptocurrencies (refetches every 30s)
+- `useWalletBalances`: Fetches real balances from connected MetaMask wallet
+- `useCryptoPortfolio`: Combines prices with balances (virtual or real mode)
+- `useChartData`: Fetches historical price data with configurable granularity
+- `useFavorites`: Manages favorite coins with localStorage persistence
+- `useModal`: Controls modal visibility state
+- `useBalances`: Manages virtual portfolio balances
 
 **Local Storage Integration**:
-- Persists user favorites and coin balances across sessions
-- Automatically syncs with Redux state on app initialization
+- Persists user favorites and virtual balances across sessions
+- Custom hooks automatically sync with localStorage on mount/update
 
 ### Data Visualization
 
@@ -99,11 +105,21 @@ Preferred communication style: Simple, everyday language.
 
 ### Cryptocurrency Data
 
-**Mock API Implementation**
-- **Current State**: Application uses mock price data defined in `src/store/saga.ts`
-- **Architecture**: Redux Saga simulates API calls with setTimeout for realistic async behavior
-- **Mock Data**: Static prices for 12 cryptocurrencies (BTC, ETH, XRP, ADA, BSC, LTC, THETA, XLM, TRX, DOGE, XMR, SOL)
-- **Future Integration Point**: Designed to easily swap mock implementation with real API calls (CoinGecko, CryptoCompare, etc.)
+**CoinGecko API Integration**
+- **Current State**: Application uses real-time data from CoinGecko API (free tier)
+- **Architecture**: Service layer (`priceService.ts`) with React Query hooks for data management
+- **API Key**: Stored in COINGECKO_API_KEY environment secret for rate limit increases
+- **Rate Limits**: 30 calls/minute (free tier), 10K calls/month
+- **Supported Coins**: BTC, ETH, XRP, ADA, BSC, LTC, THETA, XLM, TRX, DOGE, XMR, SOL
+
+**Price Data Features**:
+- Real-time prices with automatic 30-second refresh intervals
+- Historical chart data with three granularity levels:
+  - **Minute view**: `days=1` → 5-minute intervals (~288 data points)
+  - **Hour view**: `days=7` → hourly intervals (~168 data points)  
+  - **Day view**: `days=30` → daily intervals (~30 data points)
+- Automatic fallback to synthetic data if API fails
+- React Query caching reduces unnecessary API calls
 
 ### Blockchain Integration
 
@@ -118,12 +134,25 @@ Preferred communication style: Simple, everyday language.
 ### Local Storage
 
 **Browser localStorage API**
-- **Purpose**: Persists user preferences and portfolio balances
+- **Purpose**: Persists user preferences and virtual portfolio balances
 - **Data Stored**:
   - `favorites`: Array of user-selected coin symbols
-  - `balance`: Object mapping coin symbols to holding amounts
-- **Architecture**: Redux saga reads from localStorage on initialization; updates written on user actions
+  - `balance`: Object mapping coin symbols to virtual holding amounts
+- **Architecture**: Custom hooks read/write localStorage with useState for reactivity
 - **Limitation**: Data lost if user clears browser storage
+
+### Portfolio Modes
+
+**Virtual Portfolio Mode** (default)
+- Users manually enter cryptocurrency holdings
+- Balances stored in localStorage
+- Portfolio value calculated from manual balances × live prices
+
+**Real Portfolio Mode**
+- Connects to MetaMask wallet via Ethers.js
+- Fetches actual on-chain balances for supported tokens
+- Displays real portfolio value from blockchain data
+- Toggle available in header with visual indicator
 
 ### Asset Resources
 
