@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { cnHeader } from './cn-Header';
 import LoupSvg from '../UI/svg/LoupSvg';
-import BellSvg from '../UI/svg/BellSvg';
 import LeftArrowSvg from '../UI/svg/LeftArrowSvg';
 import './index.scss';
 import { Modal } from '../Modal';
-import { setModal } from '../../store/reducer';
-import { HeaderProps, AppState } from '../../types';
+import { useModal } from '../../hooks/useUIState';
+import { HeaderProps } from '../../types';
 import { useWallet } from '../../hooks/useWallet';
+import { portfolioService } from '../../services/portfolioService';
 
 function Header({ mainScreen }: HeaderProps): JSX.Element {
-  const dispatch = useDispatch();
-  const isModal = useSelector((state: AppState) => state.modal);
+  const { isOpen: isModal, toggle: toggleModal } = useModal();
   const { account, connectWallet, disconnect, isConnected, isConnecting, error } = useWallet();
   const [showError, setShowError] = useState(false);
+  const [isRealMode, setIsRealMode] = useState(portfolioService.isRealMode());
 
   useEffect(() => {
     if (error) {
@@ -29,9 +28,16 @@ function Header({ mainScreen }: HeaderProps): JSX.Element {
     return `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
   };
 
+  const togglePortfolioMode = () => {
+    const newMode = isRealMode ? 'virtual' : 'real';
+    portfolioService.setMode(newMode);
+    setIsRealMode(!isRealMode);
+    window.location.reload();
+  };
+
   return (
     <>
-      {isModal && <Modal />}
+      <Modal isOpen={isModal} onClose={toggleModal} />
       
       {showError && error && (
         <div className={cnHeader('error-toast')}>
@@ -42,9 +48,22 @@ function Header({ mainScreen }: HeaderProps): JSX.Element {
       <div className={cnHeader()}>
         {mainScreen ? (
           <>
-            <div onClick={() => dispatch(setModal())}>
+            <div onClick={toggleModal}>
               <LoupSvg />
             </div>
+
+            <div className={cnHeader('center-controls')}>
+              <span className={cnHeader('live-badge')}>🟢 Live Prices</span>
+              
+              <button 
+                className={cnHeader('mode-toggle')} 
+                onClick={togglePortfolioMode}
+                title={`Switch to ${isRealMode ? 'Virtual' : 'Real'} Portfolio`}
+              >
+                {isRealMode ? '🔗 Real' : '📊 Virtual'}
+              </button>
+            </div>
+
             {isConnected ? (
               <div className={cnHeader('wallet-connected')} onClick={disconnect} title="Click to disconnect">
                 {formatAddress(account!)}

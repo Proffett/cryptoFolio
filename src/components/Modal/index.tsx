@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { 
   Button,
   Checkbox, 
@@ -14,16 +13,18 @@ import {
 } from '@mui/material';
 
 import { basicCoins } from '@/mock/initialData.ts';
-import { fetchAsyncCryptoData, setCoins, setModal } from '@/store/reducer.ts';
-import { AppState } from '@/types';
+import { useFavorites, useBalances } from '@/hooks/useUIState';
 
-export function Modal() {
-  const dispatch = useDispatch();
-  const [favoriteCoins, setFavoriteCoins] = useState<string[]>([]);
-  const isOpen = useSelector((state: AppState) => state.modal);
-  const selectCoins = useSelector((state: AppState) => state.coins);
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
 
-  const [basicBalance, setBasicBalance] = useState<{ [key: string]: number }>({
+export function Modal({ isOpen, onClose }: ModalProps) {
+  const { favorites, setFavorites } = useFavorites();
+  const { balances, setBalances } = useBalances();
+  const [localFavorites, setLocalFavorites] = useState<string[]>(favorites);
+  const [localBalances, setLocalBalances] = useState<{ [key: string]: number }>({
     BTC: 0,
     ETH: 0,
     XRP: 0,
@@ -36,34 +37,37 @@ export function Modal() {
     DOGE: 0,
     XMR: 0,
     SOL: 0,
+    ...balances,
   });
 
   useEffect(() => {
-    if (localStorage.favorites) {
-      setFavoriteCoins([...JSON.parse(localStorage.favorites)]);
-      setBasicBalance({ ...JSON.parse(localStorage.balance || '{}') });
-    } else {
-      setFavoriteCoins([...selectCoins]);
-    }
-  }, [selectCoins]);
+    setLocalFavorites(favorites);
+    setLocalBalances({ ...localBalances, ...balances });
+  }, [favorites, balances]);
 
   const handleCheckBox = (event: React.ChangeEvent<HTMLInputElement>, coin: string): void => {
     if (event.target.checked) {
-      setFavoriteCoins((state) => [...state, ...basicCoins.filter((item) => item === coin)]);
+      setLocalFavorites((state) => [...state, coin]);
     } else {
-      setFavoriteCoins((state) => [...state.filter((item) => item !== coin)]);
+      setLocalFavorites((state) => state.filter((item) => item !== coin));
     }
-    console.log(favoriteCoins);
   };
 
   const handleCoinInput = (coin: string, event: React.ChangeEvent<HTMLInputElement>): void => {
-    setBasicBalance((prevState) => ({ ...prevState, [coin]: +event.target.value }));
+    setLocalBalances((prevState) => ({ ...prevState, [coin]: +event.target.value }));
+  };
+
+  const handleSave = () => {
+    setFavorites(localFavorites);
+    setBalances(localBalances);
+    onClose();
+    window.location.reload();
   };
 
   return (
     <Dialog
-      open={isOpen || false}
-      onClose={() => dispatch(setModal())}
+      open={isOpen}
+      onClose={onClose}
       maxWidth="sm"
       fullWidth
       PaperProps={{
@@ -82,7 +86,7 @@ export function Modal() {
                 control={
                   <Checkbox
                     sx={{ color: '#fff' }}
-                    checked={favoriteCoins.includes(coin)}
+                    checked={localFavorites.includes(coin)}
                     onChange={(event) => handleCheckBox(event, coin)}
                   />
                 }
@@ -91,7 +95,7 @@ export function Modal() {
               />
               <TextField
                 type="number"
-                value={basicBalance[coin]}
+                value={localBalances[coin] || 0}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleCoinInput(coin, event)}
                 size="small"
                 sx={{
@@ -117,27 +121,14 @@ export function Modal() {
       <DialogActions>
         <Button
           variant="outlined"
-          onClick={() => {
-            // First save to localStorage
-            localStorage.setItem('favorites', JSON.stringify(favoriteCoins));
-            localStorage.setItem('balance', JSON.stringify(basicBalance));
-            
-            // Update coins in state
-            dispatch(setCoins(favoriteCoins));
-            
-            // Fetch fresh data with new coins and balances
-            dispatch(fetchAsyncCryptoData(favoriteCoins));
-            
-            // Close modal
-            dispatch(setModal());
-          }}
+          onClick={handleSave}
           sx={{ color: '#fff', borderColor: '#fff' }}
         >
           Save Changes
         </Button>
         <Button
           variant="outlined"
-          onClick={() => dispatch(setModal())}
+          onClick={onClose}
           sx={{ color: '#fff', borderColor: '#fff' }}
         >
           Cancel
