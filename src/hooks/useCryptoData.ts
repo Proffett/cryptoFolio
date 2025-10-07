@@ -1,0 +1,91 @@
+import { useQuery } from '@tanstack/react-query';
+import { ethers } from 'ethers';
+import { priceService } from '../services/priceService';
+import { blockchainService } from '../services/blockchainService';
+import { portfolioService } from '../services/portfolioService';
+import { CoinData } from '../types';
+
+export function useCryptoPrices(coinSymbols: string[]) {
+  return useQuery({
+    queryKey: ['prices', coinSymbols],
+    queryFn: () => priceService.getMultiplePrices(coinSymbols),
+    staleTime: 45000,
+    refetchInterval: 60000,
+    refetchOnWindowFocus: true,
+  });
+}
+
+export function useWalletBalances(
+  coinSymbols: string[],
+  walletAddress: string | null,
+  isRealMode: boolean
+) {
+  return useQuery({
+    queryKey: ['balances', walletAddress, coinSymbols, isRealMode],
+    queryFn: async () => {
+      if (!isRealMode) {
+        return portfolioService.getVirtualBalances();
+      }
+
+      const walletDisconnected = localStorage.getItem('walletManuallyDisconnected') === 'true';
+      
+      if (walletDisconnected || !walletAddress || !window.ethereum) {
+        return portfolioService.getVirtualBalances();
+      }
+
+      try {
+        const provider = new ethers.BrowserProvider(window.ethereum);
+        return await blockchainService.getMultipleBalances(
+          provider,
+          walletAddress,
+          coinSymbols
+        );
+      } catch (error) {
+        console.warn('Failed to fetch blockchain balances:', error);
+        return portfolioService.getVirtualBalances();
+      }
+    },
+    enabled: coinSymbols.length > 0,
+    staleTime: 30000,
+    refetchInterval: isRealMode ? 30000 : false,
+  });
+}
+
+export function useCryptoPortfolio(coinSymbols: string[], walletAddress: string | null) {
+  const isRealMode = portfolioService.isRealMode();
+  
+  const { data: prices, isLoading: pricesLoading } = useCryptoPrices(coinSymbols);
+  const { data: balances, isLoading: balancesLoading } = useWalletBalances(
+    coinSymbols,
+    walletAddress,
+    isRealMode
+  );
+
+  const isLoading = pricesLoading || balancesLoading;
+
+  const portfolioData = coinSymbols.map((symbol): CoinData => {
+    const price = prices?.[symbol] || 0;
+    const balance = balances?.[symbol] || 0;
+    const calcValue = price * balance;
+    const calcProfit = calcValue * 0.1;
+
+    return {
+      0: symbol,
+      1: { USD: price },
+      balance,
+      calcValue: Number(calcValue.toFixed(2)),
+      calcProfit: Number(calcProfit.toFixed(2)),
+    };
+  });
+
+  const summary = portfolioData.reduce((total, coin) => total + coin.calcValue, 0);
+  const profit = portfolioData.reduce((total, coin) => total + coin.calcProfit, 0);
+
+  return {
+    data: portfolioData,
+    summary,
+    profit,
+    isLoading,
+    isRealMode,
+  };
+}

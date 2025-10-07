@@ -8,8 +8,11 @@ import {
   SET_CHART,
 } from './actions';
 import { CryptoApiResponse, CoinData } from '@/types';
+import { priceService } from '../services/priceService';
+import { blockchainService } from '../services/blockchainService';
+import { portfolioService } from '../services/portfolioService';
 
-// Mock price data for different coins
+// Mock price data for fallback
 const mockPrices: { [key: string]: number } = {
   BTC: 45000,
   ETH: 3000,
@@ -25,52 +28,81 @@ const mockPrices: { [key: string]: number } = {
   SOL: 95,
 };
 
-// Mock API call - replace with actual API
 function* fetchCryptoData(action: {
   type: string;
   payload: string[];
-}): Generator<any, void, CryptoApiResponse> {
+}): Generator<any, void, any> {
   try {
-    // Set loading state
     yield put({ type: FETCH_CRYPTO_DATA_PENDING });
 
-    // Get balance from localStorage (fresh read each time)
-    const savedBalance = localStorage.getItem('balance');
-    const balanceData = savedBalance ? JSON.parse(savedBalance) : {};
+    const isRealMode = portfolioService.isRealMode();
+    const coinSymbols = action.payload;
 
-    // Simulate API call
-    const response: CryptoApiResponse = yield call(
-      () =>
-        new Promise<CryptoApiResponse>((resolve) => {
-          setTimeout(() => {
-            // Generate data for each requested coin
-            const data: CoinData[] = action.payload.map((coinSymbol) => {
-              const price = mockPrices[coinSymbol] || 1;
-              const balance = balanceData[coinSymbol] || 0;
-              const calcValue = price * balance;
-              const calcProfit = calcValue * 0.1; // 10% mock profit
+    let prices: Record<string, number>;
+    let balances: Record<string, number>;
 
-              return {
-                0: coinSymbol,
-                1: { USD: price },
-                balance: balance,
-                calcValue: Number(calcValue.toFixed(2)),
-                calcProfit: Number(calcProfit.toFixed(2)),
-              } as CoinData;
-            });
+    try {
+      prices = yield call([priceService, 'getMultiplePrices'], coinSymbols);
+    } catch (error) {
+      console.warn('Failed to fetch real prices, using mock data:', error);
+      prices = Object.fromEntries(
+        coinSymbols.map((symbol) => [symbol, mockPrices[symbol] || 1])
+      );
+    }
 
-            // Calculate totals
-            const summary = data.reduce((total, coin) => total + coin.calcValue, 0);
-            const profit = data.reduce((total, coin) => total + coin.calcProfit, 0);
+    if (isRealMode) {
+      const walletConnected = localStorage.getItem('walletManuallyDisconnected') !== 'true';
+      
+      if (walletConnected && window.ethereum) {
+        try {
+          const { ethers } = yield import('ethers');
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const accounts = yield call([provider, 'send'], 'eth_accounts', []);
+          
+          if (accounts.length > 0) {
+            balances = yield call(
+              [blockchainService, 'getMultipleBalances'],
+              provider,
+              accounts[0],
+              coinSymbols
+            );
+          } else {
+            balances = portfolioService.getVirtualBalances();
+          }
+        } catch (error) {
+          console.warn('Failed to fetch blockchain balances:', error);
+          balances = portfolioService.getVirtualBalances();
+        }
+      } else {
+        balances = portfolioService.getVirtualBalances();
+      }
+    } else {
+      balances = portfolioService.getVirtualBalances();
+    }
 
-            resolve({
-              data,
-              summary,
-              profit,
-            });
-          }, 1000);
-        }),
-    );
+    const data: CoinData[] = coinSymbols.map((coinSymbol) => {
+      const price = prices[coinSymbol] || mockPrices[coinSymbol] || 1;
+      const balance = balances[coinSymbol] || 0;
+      const calcValue = price * balance;
+      const calcProfit = calcValue * 0.1;
+
+      return {
+        0: coinSymbol,
+        1: { USD: price },
+        balance: balance,
+        calcValue: Number(calcValue.toFixed(2)),
+        calcProfit: Number(calcProfit.toFixed(2)),
+      } as CoinData;
+    });
+
+    const summary = data.reduce((total, coin) => total + coin.calcValue, 0);
+    const profit = data.reduce((total, coin) => total + coin.calcProfit, 0);
+
+    const response: CryptoApiResponse = {
+      data,
+      summary,
+      profit,
+    };
 
     yield put({ type: FETCH_CRYPTO_SUCCESS, payload: response });
   } catch (error) {
