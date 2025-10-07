@@ -21,6 +21,7 @@
     "bem-cn": "^3.0.1",
     "chart.js": "^4.4.7",
     "crypto-icons": "^1.0.65",
+    "ethers": "^6.15.0",
     "normalize.css": "^8.0.1",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
