@@ -48,6 +48,11 @@ function MainView() {
         <section className={cnMainView('coins-wrapper')} role="menu">
           {isLoading ? (
             <p>Loading...</p>
+          ) : data.length === 0 && isRealMode && account ? (
+            <div className={cnMainView('empty-notice')}>
+              <p>💼 Your wallet is connected</p>
+              <p className="text_secondary">No cryptocurrency balances found for your favorites</p>
+            </div>
           ) : (
             data.map((coin: CoinData, index: number) => {
               const key = index + Math.random();

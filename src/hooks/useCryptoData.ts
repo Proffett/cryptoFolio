@@ -63,20 +63,27 @@ export function useCryptoPortfolio(coinSymbols: string[], walletAddress: string 
 
   const isLoading = pricesLoading || balancesLoading;
 
-  const portfolioData = coinSymbols.map((symbol): CoinData => {
-    const price = prices?.[symbol] || 0;
-    const balance = balances?.[symbol] || 0;
-    const calcValue = price * balance;
-    const calcProfit = calcValue * 0.1;
+  const portfolioData = coinSymbols
+    .map((symbol): CoinData => {
+      const price = prices?.[symbol] || 0;
+      const balance = balances?.[symbol] || 0;
+      const calcValue = price * balance;
+      const calcProfit = calcValue * 0.1;
 
-    return {
-      0: symbol,
-      1: { USD: price },
-      balance,
-      calcValue: Number(calcValue.toFixed(2)),
-      calcProfit: Number(calcProfit.toFixed(2)),
-    };
-  });
+      return {
+        0: symbol,
+        1: { USD: price },
+        balance,
+        calcValue: Number(calcValue.toFixed(2)),
+        calcProfit: Number(calcProfit.toFixed(2)),
+      };
+    })
+    .filter((coin) => {
+      if (isRealMode && walletAddress) {
+        return coin.balance > 0;
+      }
+      return true;
+    });
 
   const summary = portfolioData.reduce((total, coin) => total + coin.calcValue, 0);
   const profit = portfolioData.reduce((total, coin) => total + coin.calcProfit, 0);
