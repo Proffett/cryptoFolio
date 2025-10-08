@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
+import { useQueryClient } from '@tanstack/react-query';
 import { useCryptoPortfolio, useChartData } from '../../hooks/useCryptoData';
 import { useFavorites } from '../../hooks/useUIState';
 import { useWallet } from '../../hooks/useWallet';
@@ -12,6 +13,7 @@ import { CoinData } from '../../types';
 
 function CoinView() {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { coin } = useParams<{ coin: string }>();
   const [historyClassActive, setHistoryClassActive] = useState<'minute' | 'hour' | 'day'>('hour');
   const [coinClassActive, setCoinClassActive] = useState<string>(coin || 'BTC');
@@ -20,6 +22,10 @@ function CoinView() {
   const { favorites } = useFavorites();
   const { account } = useWallet();
   const { data: coinsData, isLoading: isPortfolioLoading } = useCryptoPortfolio(favorites, account);
+
+  useEffect(() => {
+    queryClient.invalidateQueries({ queryKey: ['balances'] });
+  }, [account, queryClient]);
 
   const { data: chartData, isLoading: isChartLoading } = useChartData(coin || 'BTC', historyClassActive);
 

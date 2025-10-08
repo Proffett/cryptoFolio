@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useQueryClient } from '@tanstack/react-query';
 import { useCryptoPortfolio } from '@/hooks/useCryptoData';
 import { useFavorites } from '@/hooks/useUIState';
 import { useWallet } from '@/hooks/useWallet';
@@ -11,9 +12,14 @@ import { CoinData } from '@/types';
 
 function MainView() {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const { favorites } = useFavorites();
   const { account } = useWallet();
   const { data, summary, profit, isLoading, isRealMode } = useCryptoPortfolio(favorites, account);
+
+  useEffect(() => {
+    queryClient.invalidateQueries({ queryKey: ['balances'] });
+  }, [account, queryClient]);
 
   const handleCoinItem = (event: React.MouseEvent<HTMLDivElement>, coin: string): void => {
     event.currentTarget.focus();
