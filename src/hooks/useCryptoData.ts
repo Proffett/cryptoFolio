@@ -46,7 +46,8 @@ export function useWalletBalances(
       }
     },
     enabled: coinSymbols.length > 0,
-    staleTime: 30000,
+    staleTime: 0,
+    refetchOnMount: 'always',
     refetchInterval: isRealMode ? 30000 : false,
   });
 }
@@ -79,7 +80,7 @@ export function useCryptoPortfolio(coinSymbols: string[], walletAddress: string 
       };
     })
     .filter((coin) => {
-      if (isRealMode && walletAddress) {
+      if (isRealMode && walletAddress && balances) {
         return coin.balance > 0;
       }
       return true;
