@@ -98,6 +98,12 @@
       transform: translateY(-1px);
     }
   }
+
+  &__mode-status {
+    color: #4caf50;
+    margin-left: 4px;
+    font-size: 14px;
+  }
 }
 
 @keyframes pulse {

@@ -100,6 +100,7 @@ export function useWallet() {
       }
 
       try {
+        if (!window.ethereum) return;
         const provider = new ethers.BrowserProvider(window.ethereum);
         const accounts = await provider.send('eth_accounts', []);
         

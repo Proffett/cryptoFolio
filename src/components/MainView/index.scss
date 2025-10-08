@@ -109,4 +109,19 @@
     }
   }
 
+  &__wallet-notice {
+    margin: 20px;
+    padding: 20px;
+    background: rgba(74, 63, 105, 0.3);
+    border: 1px solid rgba(74, 63, 105, 0.5);
+    border-radius: 10px;
+    text-align: center;
+    
+    p:first-child {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+  }
+
 }

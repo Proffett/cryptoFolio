@@ -60,7 +60,13 @@ function Header({ mainScreen }: HeaderProps): JSX.Element {
                 onClick={togglePortfolioMode}
                 title={`Switch to ${isRealMode ? 'Virtual' : 'Real'} Portfolio`}
               >
-                {isRealMode ? '🔗 Real' : '📊 Virtual'}
+                {isRealMode ? (
+                  <>
+                    🔗 Real {isConnected && <span className={cnHeader('mode-status')}>✓</span>}
+                  </>
+                ) : (
+                  '📊 Virtual'
+                )}
               </button>
             </div>
 

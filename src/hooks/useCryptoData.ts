@@ -30,7 +30,7 @@ export function useWalletBalances(
       const walletDisconnected = localStorage.getItem('walletManuallyDisconnected') === 'true';
       
       if (walletDisconnected || !walletAddress || !window.ethereum) {
-        return portfolioService.getVirtualBalances();
+        return {};
       }
 
       try {
@@ -42,7 +42,7 @@ export function useWalletBalances(
         );
       } catch (error) {
         console.warn('Failed to fetch blockchain balances:', error);
-        return portfolioService.getVirtualBalances();
+        return {};
       }
     },
     enabled: coinSymbols.length > 0,

@@ -38,6 +38,13 @@ function MainView() {
           </p>
         </div>
 
+        {isRealMode && !account && (
+          <div className={cnMainView('wallet-notice')}>
+            <p>🔗 Real Portfolio mode is active</p>
+            <p className="text_secondary">Connect MetaMask to see your real balances</p>
+          </div>
+        )}
+
         <section className={cnMainView('coins-wrapper')} role="menu">
           {isLoading ? (
             <p>Loading...</p>
