@@ -2,7 +2,7 @@
   margin: 0 auto;
 
   &__summary-portfolio {
-    margin: 0 20px 24px;
+    margin: 0 var(--app-shell-gutter) 24px;
     padding: 28px 24px;
     border: 1px solid var(--app-border);
     border-radius: 28px;
@@ -74,7 +74,7 @@
     display: flex;
     flex-direction: column;
     min-height: 150px;
-    margin: 0 20px;
+    margin: 0 var(--app-shell-gutter);
     padding: 18px;
     border: 1px solid var(--app-border);
     border-radius: 24px;
@@ -175,7 +175,7 @@
   }
 
   &__wallet-notice {
-    margin: 0 20px 6px;
+    margin: 0 var(--app-shell-gutter) 6px;
     padding: 20px;
     background: rgba(15, 24, 45, 0.84);
     border: 1px solid rgba(127, 215, 255, 0.18);
@@ -191,7 +191,7 @@
   }
 
   &__empty-notice {
-    margin: 0 20px 6px;
+    margin: 0 var(--app-shell-gutter) 6px;
     padding: 30px;
     background: rgba(12, 20, 39, 0.76);
     border: 1px solid var(--app-border);
@@ -211,15 +211,15 @@
 @media (max-width: 767px) {
   .MainView {
     &__summary-portfolio {
-      margin: 0 14px 20px;
+      margin-bottom: 20px;
       padding: 24px 18px;
     }
 
     &__coin-item,
     &__wallet-notice,
     &__empty-notice {
-      margin-left: 14px;
-      margin-right: 14px;
+      margin-left: var(--app-shell-gutter);
+      margin-right: var(--app-shell-gutter);
     }
   }
 }

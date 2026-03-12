@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Suspense, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { useQueryClient } from '@tanstack/react-query';
 import { useCryptoPortfolio, useChartData } from '../../hooks/useCryptoData';
@@ -6,10 +6,11 @@ import { useFavorites } from '../../hooks/useUIState';
 import { useWallet } from '../../hooks/useWallet';
 import { SymbolToFullName } from '../../mock/initialData';
 import Header from '../Header';
-import Chart from '../Chart';
 import { cnCoinView } from './cn-CoinView';
 import './index.scss';
 import { CoinData } from '../../types';
+
+const Chart = React.lazy(() => import('../Chart'));
 
 function CoinView() {
   const navigate = useNavigate();
@@ -140,7 +141,9 @@ function CoinView() {
       </div>
       {!isLoading && chartData && (
         <div className={cnCoinView('chart-container')}>
-          <Chart times={chartData.times} values={chartData.values} history={historyClassActive} />
+          <Suspense fallback={<p>Loading chart...</p>}>
+            <Chart times={chartData.times} values={chartData.values} history={historyClassActive} />
+          </Suspense>
         </div>
       )}
     </main>

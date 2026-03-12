@@ -1,4 +1,5 @@
-import { ethers } from 'ethers';
+import type { BrowserProvider } from 'ethers';
+import { loadEthers } from './ethersLoader';
 
 const ERC20_ABI = [
   'function balanceOf(address) view returns (uint256)',
@@ -14,10 +15,11 @@ const TOKEN_ADDRESSES: Record<string, string> = {
 
 class BlockchainService {
   async getETHBalance(
-    provider: ethers.BrowserProvider,
+    provider: BrowserProvider,
     address: string
   ): Promise<number> {
     try {
+      const { ethers } = await loadEthers();
       const balance = await provider.getBalance(address);
       return parseFloat(ethers.formatEther(balance));
     } catch (error) {
@@ -27,11 +29,12 @@ class BlockchainService {
   }
 
   async getERC20Balance(
-    provider: ethers.BrowserProvider,
+    provider: BrowserProvider,
     tokenSymbol: string,
     walletAddress: string
   ): Promise<number> {
     try {
+      const { ethers } = await loadEthers();
       const tokenAddress = TOKEN_ADDRESSES[tokenSymbol];
       if (!tokenAddress) {
         return 0;
@@ -51,7 +54,7 @@ class BlockchainService {
   }
 
   async getMultipleBalances(
-    provider: ethers.BrowserProvider,
+    provider: BrowserProvider,
     walletAddress: string,
     coinSymbols: string[]
   ): Promise<Record<string, number>> {

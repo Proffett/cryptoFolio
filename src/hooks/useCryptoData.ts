@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { ethers } from 'ethers';
 import { priceService } from '../services/priceService';
 import { blockchainService } from '../services/blockchainService';
 import { portfolioService } from '../services/portfolioService';
+import { loadEthers } from '../services/ethersLoader';
 import { CoinData } from '../types';
 
 export function useCryptoPrices(coinSymbols: string[]) {
@@ -34,6 +34,7 @@ export function useWalletBalances(
       }
 
       try {
+        const { ethers } = await loadEthers();
         const provider = new ethers.BrowserProvider(window.ethereum);
         return await blockchainService.getMultipleBalances(
           provider,

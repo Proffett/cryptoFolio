@@ -24,3 +24,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 /yarn.lock
+
+.playwright-cli
+.pnpm-store
+.local
+.idea
+/output

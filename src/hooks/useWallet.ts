@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback } from 'react';
-import { ethers } from 'ethers';
-import {portfolioService} from "@/services/portfolioService.ts";
+import type { BrowserProvider } from 'ethers';
+import { portfolioService } from '@/services/portfolioService.ts';
+import { loadEthers } from '@/services/ethersLoader';
 
 interface WalletState {
   account: string | null;
   chainId: string | null;
-  provider: ethers.BrowserProvider | null;
+  provider: BrowserProvider | null;
   isConnecting: boolean;
   error: string | null;
 }
@@ -31,6 +32,7 @@ export function useWallet() {
     try {
       setWalletState((prev) => ({ ...prev, isConnecting: true, error: null }));
 
+      const { ethers } = await loadEthers();
       const provider = new ethers.BrowserProvider(window.ethereum);
       const accounts = await provider.send('eth_requestAccounts', []);
       const network = await provider.getNetwork();
@@ -105,6 +107,7 @@ export function useWallet() {
 
       try {
         if (!window.ethereum) return;
+        const { ethers } = await loadEthers();
         const provider = new ethers.BrowserProvider(window.ethereum);
         const accounts = await provider.send('eth_accounts', []);
         
@@ -140,6 +143,7 @@ export function useWallet() {
       if (!window.ethereum) return;
       
       try {
+        const { ethers } = await loadEthers();
         const provider = new ethers.BrowserProvider(window.ethereum);
         const network = await provider.getNetwork();
         setWalletState((prev) => ({
