@@ -1,0 +1,291 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4] [cursor=pointer]:
+      - img [ref=e6]
+      - generic [ref=e8]:
+        - generic [ref=e9]: 🟢 Live Prices
+        - button [ref=e83]: 🔗 Real
+      - button [ref=e84]: Connect Wallet
+    - main [ref=e12]:
+      - generic [ref=e13]:
+        - paragraph [ref=e14]: Your total balance
+        - heading [level=1] [ref=e85]:
+          - superscript [ref=e16]: $
+          - text: "0.00"
+        - paragraph [ref=e17]: 24h Changes
+        - paragraph [ref=e18]: +$0.00↑
+      - generic [ref=e19]:
+        - paragraph [ref=e20]: 🔗 Real Portfolio mode is active
+        - paragraph [ref=e21]: Connect MetaMask to see your real balances
+      - menu [ref=e22]:
+        - menuitem [ref=e86] [cursor=pointer]:
+          - generic [ref=e24]:
+            - generic [ref=e25]:
+              - generic [ref=e26]: 
+              - generic [ref=e27]:
+                - generic [ref=e28]: BTC
+                - generic [ref=e29]: Bitcoin
+            - paragraph [ref=e30]: 0 $0
+          - generic [ref=e31]:
+            - generic [ref=e32]:
+              - generic [ref=e33]: $69486
+              - generic [ref=e34]: Price
+            - generic [ref=e35]:
+              - generic [ref=e36]: +0%
+              - generic [ref=e37]: Profit/Loss
+        - menuitem [ref=e87] [cursor=pointer]:
+          - generic [ref=e39]:
+            - generic [ref=e40]:
+              - generic [ref=e41]: 
+              - generic [ref=e42]:
+                - generic [ref=e43]: ETH
+                - generic [ref=e44]: Ethereum
+            - paragraph [ref=e45]: 0 $0
+          - generic [ref=e46]:
+            - generic [ref=e47]:
+              - generic [ref=e48]: $2043.26
+              - generic [ref=e49]: Price
+            - generic [ref=e50]:
+              - generic [ref=e51]: +0%
+              - generic [ref=e52]: Profit/Loss
+        - menuitem [ref=e88] [cursor=pointer]:
+          - generic [ref=e54]:
+            - generic [ref=e55]:
+              - generic [ref=e56]: 
+              - generic [ref=e57]:
+                - generic [ref=e58]: XRP
+                - generic [ref=e59]: Ripple
+            - paragraph [ref=e60]: 0 $0
+          - generic [ref=e61]:
+            - generic [ref=e62]:
+              - generic [ref=e63]: $1.37
+              - generic [ref=e64]: Price
+            - generic [ref=e65]:
+              - generic [ref=e66]: +0%
+              - generic [ref=e67]: Profit/Loss
+        - menuitem [ref=e89] [cursor=pointer]:
+          - generic [ref=e69]:
+            - generic [ref=e70]:
+              - generic [ref=e71]: 
+              - generic [ref=e72]:
+                - generic [ref=e73]: ADA
+                - generic [ref=e74]: Cardano
+            - paragraph [ref=e75]: 0 $0
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - generic [ref=e78]: $0.259445
+              - generic [ref=e79]: Price
+            - generic [ref=e80]:
+              - generic [ref=e81]: +0%
+              - generic [ref=e82]: Profit/Loss
+  - dialog "Portfolio setup Friendly asset picker for your portfolio In real mode balances come from the connected wallet. Here you choose which assets stay visible. Real mode" [ref=e92]:
+    - heading "Portfolio setup Friendly asset picker for your portfolio In real mode balances come from the connected wallet. Here you choose which assets stay visible. Real mode" [level=2] [ref=e93]:
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - paragraph [ref=e96]: Portfolio setup
+          - heading "Friendly asset picker for your portfolio" [level=5] [ref=e97]
+          - paragraph [ref=e98]: In real mode balances come from the connected wallet. Here you choose which assets stay visible.
+        - generic [ref=e100]: Real mode
+    - generic [ref=e102]:
+      - generic [ref=e103]:
+        - generic [ref=e105]:
+          - img [ref=e107]
+          - textbox "Search by symbol, coin name, or purpose" [ref=e109]
+          - group
+        - generic [ref=e110]:
+          - button "Select all" [ref=e111] [cursor=pointer]
+          - button "Clear" [ref=e112] [cursor=pointer]
+      - generic [ref=e113]:
+        - generic [ref=e114]:
+          - generic [ref=e115]: "4"
+          - generic [ref=e116]: assets selected
+        - generic [ref=e117]:
+          - generic [ref=e118]: "0"
+          - generic [ref=e119]: with saved amount
+        - generic [ref=e120]:
+          - generic [ref=e121]: Live
+          - generic [ref=e122]: balances from wallet
+      - generic [ref=e123]:
+        - button "BTC" [ref=e124]:
+          - generic [ref=e125]: BTC
+          - img [ref=e126] [cursor=pointer]
+        - button "ETH" [ref=e128]:
+          - generic [ref=e129]: ETH
+          - img [ref=e130] [cursor=pointer]
+        - button "XRP" [ref=e132]:
+          - generic [ref=e133]: XRP
+          - img [ref=e134] [cursor=pointer]
+        - button "ADA" [ref=e136]:
+          - generic [ref=e137]: ADA
+          - img [ref=e138] [cursor=pointer]
+      - generic [ref=e140]:
+        - generic [ref=e141]:
+          - generic [ref=e142]:
+            - generic [ref=e143]:
+              - generic [ref=e145]: 
+              - generic [ref=e146]:
+                - generic [ref=e147]: BTC
+                - generic [ref=e148]: Bitcoin
+                - generic [ref=e149]: Digital gold
+            - generic [ref=e150] [cursor=pointer]:
+              - checkbox [checked] [ref=e151]
+              - img [ref=e152]
+          - generic [ref=e154]:
+            - generic [ref=e155]: Wallet-driven balance
+            - generic [ref=e156]: In real mode this card only controls visibility. Balance comes from the connected wallet.
+        - generic [ref=e157]:
+          - generic [ref=e158]:
+            - generic [ref=e159]:
+              - generic [ref=e161]: 
+              - generic [ref=e162]:
+                - generic [ref=e163]: ADA
+                - generic [ref=e164]: Cardano
+                - generic [ref=e165]: Research-first chain
+            - generic [ref=e166] [cursor=pointer]:
+              - checkbox [checked] [ref=e167]
+              - img [ref=e168]
+          - generic [ref=e170]:
+            - generic [ref=e171]: Wallet-driven balance
+            - generic [ref=e172]: In real mode this card only controls visibility. Balance comes from the connected wallet.
+        - generic [ref=e173]:
+          - generic [ref=e174]:
+            - generic [ref=e175]:
+              - generic [ref=e177]: 
+              - generic [ref=e178]:
+                - generic [ref=e179]: ETH
+                - generic [ref=e180]: Ethereum
+                - generic [ref=e181]: Smart contract leader
+            - generic [ref=e182] [cursor=pointer]:
+              - checkbox [checked] [ref=e183]
+              - img [ref=e184]
+          - generic [ref=e186]:
+            - generic [ref=e187]: Wallet-driven balance
+            - generic [ref=e188]: In real mode this card only controls visibility. Balance comes from the connected wallet.
+        - generic [ref=e189]:
+          - generic [ref=e190]:
+            - generic [ref=e191]:
+              - generic [ref=e193]: 
+              - generic [ref=e194]:
+                - generic [ref=e195]: XRP
+                - generic [ref=e196]: Ripple
+                - generic [ref=e197]: Payments rail
+            - generic [ref=e198] [cursor=pointer]:
+              - checkbox [checked] [ref=e199]
+              - img [ref=e200]
+          - generic [ref=e202]:
+            - generic [ref=e203]: Wallet-driven balance
+            - generic [ref=e204]: In real mode this card only controls visibility. Balance comes from the connected wallet.
+        - generic [ref=e205]:
+          - generic [ref=e206]:
+            - generic [ref=e209]:
+              - generic [ref=e210]: BSC
+              - generic [ref=e211]: Binance Coin
+              - generic [ref=e212]: Exchange ecosystem
+            - generic [ref=e213] [cursor=pointer]:
+              - checkbox [ref=e214]
+              - img [ref=e215]
+          - generic [ref=e217]:
+            - generic [ref=e218]: Wallet-driven balance
+            - generic [ref=e219]: In real mode this card only controls visibility. Balance comes from the connected wallet.
+        - generic [ref=e220]:
+          - generic [ref=e221]:
+            - generic [ref=e222]:
+              - generic [ref=e224]: 
+              - generic [ref=e225]:
+                - generic [ref=e226]: DOGE
+                - generic [ref=e227]: Dogecoin
+                - generic [ref=e228]: Community memecoin
+            - generic [ref=e229] [cursor=pointer]:
+              - checkbox [ref=e230]
+              - img [ref=e231]
+          - generic [ref=e233]:
+            - generic [ref=e234]: Wallet-driven balance
+            - generic [ref=e235]: In real mode this card only controls visibility. Balance comes from the connected wallet.
+        - generic [ref=e236]:
+          - generic [ref=e237]:
+            - generic [ref=e238]:
+              - generic [ref=e240]: 
+              - generic [ref=e241]:
+                - generic [ref=e242]: LTC
+                - generic [ref=e243]: Litecoin
+                - generic [ref=e244]: Fast peer-to-peer
+            - generic [ref=e245] [cursor=pointer]:
+              - checkbox [ref=e246]
+              - img [ref=e247]
+          - generic [ref=e249]:
+            - generic [ref=e250]: Wallet-driven balance
+            - generic [ref=e251]: In real mode this card only controls visibility. Balance comes from the connected wallet.
+        - generic [ref=e252]:
+          - generic [ref=e253]:
+            - generic [ref=e254]:
+              - generic [ref=e256]: 
+              - generic [ref=e257]:
+                - generic [ref=e258]: XMR
+                - generic [ref=e259]: Monero
+                - generic [ref=e260]: Privacy-focused currency
+            - generic [ref=e261] [cursor=pointer]:
+              - checkbox [ref=e262]
+              - img [ref=e263]
+          - generic [ref=e265]:
+            - generic [ref=e266]: Wallet-driven balance
+            - generic [ref=e267]: In real mode this card only controls visibility. Balance comes from the connected wallet.
+        - generic [ref=e268]:
+          - generic [ref=e269]:
+            - generic [ref=e272]:
+              - generic [ref=e273]: SOL
+              - generic [ref=e274]: Solana
+              - generic [ref=e275]: Fast app execution
+            - generic [ref=e276] [cursor=pointer]:
+              - checkbox [ref=e277]
+              - img [ref=e278]
+          - generic [ref=e280]:
+            - generic [ref=e281]: Wallet-driven balance
+            - generic [ref=e282]: In real mode this card only controls visibility. Balance comes from the connected wallet.
+        - generic [ref=e283]:
+          - generic [ref=e284]:
+            - generic [ref=e285]:
+              - generic [ref=e287]: 
+              - generic [ref=e288]:
+                - generic [ref=e289]: XLM
+                - generic [ref=e290]: Stellar
+                - generic [ref=e291]: Cross-border transfers
+            - generic [ref=e292] [cursor=pointer]:
+              - checkbox [ref=e293]
+              - img [ref=e294]
+          - generic [ref=e296]:
+            - generic [ref=e297]: Wallet-driven balance
+            - generic [ref=e298]: In real mode this card only controls visibility. Balance comes from the connected wallet.
+        - generic [ref=e299]:
+          - generic [ref=e300]:
+            - generic [ref=e303]:
+              - generic [ref=e304]: THETA
+              - generic [ref=e305]: Theta
+              - generic [ref=e306]: Media delivery network
+            - generic [ref=e307] [cursor=pointer]:
+              - checkbox [ref=e308]
+              - img [ref=e309]
+          - generic [ref=e311]:
+            - generic [ref=e312]: Wallet-driven balance
+            - generic [ref=e313]: In real mode this card only controls visibility. Balance comes from the connected wallet.
+        - generic [ref=e314]:
+          - generic [ref=e315]:
+            - generic [ref=e316]:
+              - generic [ref=e318]: 
+              - generic [ref=e319]:
+                - generic [ref=e320]: TRX
+                - generic [ref=e321]: TRON
+                - generic [ref=e322]: High-throughput chain
+            - generic [ref=e323] [cursor=pointer]:
+              - checkbox [ref=e324]
+              - img [ref=e325]
+          - generic [ref=e327]:
+            - generic [ref=e328]: Wallet-driven balance
+            - generic [ref=e329]: In real mode this card only controls visibility. Balance comes from the connected wallet.
+    - generic [ref=e330]:
+      - button "Reset defaults" [ref=e331] [cursor=pointer]:
+        - img [ref=e333]
+        - text: Reset defaults
+      - button "Cancel" [ref=e335] [cursor=pointer]
+      - button "Apply changes" [ref=e336] [cursor=pointer]:
+        - img [ref=e338]
+        - text: Apply changes

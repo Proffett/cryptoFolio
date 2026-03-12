@@ -1,0 +1,274 @@
+[    2551ms] [WARNING] ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition. @ http://127.0.0.1:2000/node_modules/.vite/deps/chunk-W3OOVQUQ.js?v=fe2140cf:4428
+[    2551ms] [WARNING] ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath. @ http://127.0.0.1:2000/node_modules/.vite/deps/chunk-W3OOVQUQ.js?v=fe2140cf:4428
+[   51332ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/BTC:0
+[   51333ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[   51334ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at Object.start (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:865:9)
+    at _a5.fetch (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1170:55)
+    at _a6.executeFetch_fn (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1678:51)
+    at _a6.onSubscribe (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1369:74)
+    at _a6.subscribe (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:24:10)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:3384:56 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[   52361ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/BTC:0
+[   52362ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[   52362ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[   54386ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/:0
+[   54387ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[   54387ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  114486ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/:0
+[  114486ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  114486ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at Object.start (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:865:9)
+    at _a5.fetch (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1170:55)
+    at _a6.executeFetch_fn (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1678:51)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1712:72 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  115511ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/:0
+[  115511ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  115512ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  117537ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/:0
+[  117537ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  117537ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  237645ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/:0
+[  237645ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  237645ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at Object.start (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:865:9)
+    at _a5.fetch (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1170:55)
+    at _a6.executeFetch_fn (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1678:51)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1712:72 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  238669ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/:0
+[  238669ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  238669ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  240693ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/:0
+[  240693ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  240693ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  258242ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/BTC:0
+[  258242ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  258242ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at Object.start (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:865:9)
+    at _a5.fetch (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1170:55)
+    at _a6.executeFetch_fn (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1678:51)
+    at _a6.onSubscribe (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1369:74)
+    at _a6.subscribe (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:24:10)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:3384:56 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  259268ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/BTC:0
+[  259269ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  259269ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  261297ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/BTC:0
+[  261297ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  261297ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  264177ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/:0
+[  264177ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  264177ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at Object.start (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:865:9)
+    at _a5.fetch (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1170:55)
+    at _a6.executeFetch_fn (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1678:51)
+    at _a6.onSubscribe (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1369:74)
+    at _a6.subscribe (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:24:10)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:3384:56 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  265253ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/:0
+[  265253ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  265253ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  267710ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/:0
+[  267710ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  267710ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  268336ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/ADA:0
+[  268336ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  268337ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at Object.start (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:865:9)
+    at _a5.fetch (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1170:55)
+    at _a6.executeFetch_fn (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1678:51)
+    at _a6.onSubscribe (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1369:74)
+    at _a6.subscribe (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:24:10)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:3384:56 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  268337ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/coins/cardano/market_chart?vs_currency=usd&days=7' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/ADA:0
+[  268337ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/coins/cardano/market_chart?vs_currency=usd&days=7:0
+[  268337ms] [ERROR] Failed to fetch historical prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getHistoricalPrices (http://127.0.0.1:2000/src/services/priceService.ts:72:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:86:35)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at Object.start (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:865:9)
+    at _a5.fetch (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1170:55)
+    at _a6.executeFetch_fn (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1678:51)
+    at _a6.onSubscribe (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1369:74)
+    at _a6.subscribe (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:24:10)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:3384:56 @ http://127.0.0.1:2000/src/services/priceService.ts:80
+[  268337ms] [WARNING] Failed to fetch real chart data, using fallback: TypeError: Failed to fetch
+    at PriceService.getHistoricalPrices (http://127.0.0.1:2000/src/services/priceService.ts:72:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:86:35)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at Object.start (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:865:9)
+    at _a5.fetch (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1170:55)
+    at _a6.executeFetch_fn (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1678:51)
+    at _a6.onSubscribe (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1369:74)
+    at _a6.subscribe (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:24:10)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:3384:56 @ http://127.0.0.1:2000/src/hooks/useCryptoData.ts:87
+[  269475ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/ADA:0
+[  269476ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  269476ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  271518ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/ADA:0
+[  271518ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  271518ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  273302ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/coins/cardano/market_chart?vs_currency=usd&days=30' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/ADA:0
+[  273302ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/coins/cardano/market_chart?vs_currency=usd&days=30:0
+[  273302ms] [ERROR] Failed to fetch historical prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getHistoricalPrices (http://127.0.0.1:2000/src/services/priceService.ts:72:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:86:35)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at Object.start (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:865:9)
+    at _a5.fetch (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1170:55)
+    at _a6.executeFetch_fn (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1678:51)
+    at _a6.setOptions (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1426:72)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:3394:14
+    at commitHookEffectListMount (http://127.0.0.1:2000/node_modules/.vite/deps/chunk-SXRIVT2P.js?v=fe2140cf:16963:34) @ http://127.0.0.1:2000/src/services/priceService.ts:80
+[  273302ms] [WARNING] Failed to fetch real chart data, using fallback: TypeError: Failed to fetch
+    at PriceService.getHistoricalPrices (http://127.0.0.1:2000/src/services/priceService.ts:72:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:86:35)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at Object.start (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:865:9)
+    at _a5.fetch (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1170:55)
+    at _a6.executeFetch_fn (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1678:51)
+    at _a6.setOptions (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1426:72)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:3394:14
+    at commitHookEffectListMount (http://127.0.0.1:2000/node_modules/.vite/deps/chunk-SXRIVT2P.js?v=fe2140cf:16963:34) @ http://127.0.0.1:2000/src/hooks/useCryptoData.ts:87
+[  331571ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/ADA:0
+[  331571ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  331571ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at Object.start (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:865:9)
+    at _a5.fetch (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1170:55)
+    at _a6.executeFetch_fn (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1678:51)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1712:72 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  332596ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/ADA:0
+[  332597ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  332597ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  334621ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/ADA:0
+[  334621ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  334621ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  454783ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/ADA:0
+[  454783ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  454783ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at Object.start (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:865:9)
+    at _a5.fetch (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1170:55)
+    at _a6.executeFetch_fn (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1678:51)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1712:72 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  455815ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/ADA:0
+[  455815ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  455815ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45
+[  457845ms] [ERROR] Access to fetch at 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true' from origin 'http://127.0.0.1:2000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. @ http://127.0.0.1:2000/ADA:0
+[  457846ms] [ERROR] Failed to load resource: net::ERR_FAILED @ https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,ripple,cardano&vs_currencies=usd&include_24hr_change=true:0
+[  457846ms] [ERROR] Failed to fetch prices from CoinGecko: TypeError: Failed to fetch
+    at PriceService.getMultiplePrices (http://127.0.0.1:2000/src/services/priceService.ts:32:30)
+    at queryFn (http://127.0.0.1:2000/src/hooks/useCryptoData.ts:9:33)
+    at Object.fetchFn [as fn] (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:1123:14)
+    at run (http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:822:49)
+    at http://127.0.0.1:2000/node_modules/.vite/deps/@tanstack_react-query.js?v=fe2140cf:847:11 @ http://127.0.0.1:2000/src/services/priceService.ts:45

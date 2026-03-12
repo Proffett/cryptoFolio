@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import TuneRoundedIcon from '@mui/icons-material/TuneRounded';
 import { cnHeader } from './cn-Header';
-import LoupSvg from '../UI/svg/LoupSvg';
 import LeftArrowSvg from '../UI/svg/LeftArrowSvg';
 import './index.scss';
 import { Modal } from '../Modal';
@@ -23,6 +23,7 @@ function Header({ mainScreen }: HeaderProps): JSX.Element {
       return () => clearTimeout(timer);
     }
   }, [error]);
+
 
   const formatAddress = (address: string) => {
     return `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
@@ -48,9 +49,17 @@ function Header({ mainScreen }: HeaderProps): JSX.Element {
       <div className={cnHeader()}>
         {mainScreen ? (
           <>
-            <div onClick={toggleModal}>
-              <LoupSvg />
-            </div>
+            <button
+              type="button"
+              className={cnHeader('setup-button')}
+              onClick={toggleModal}
+              aria-label="Open asset setup"
+              aria-haspopup="dialog"
+              aria-expanded={isModal}
+            >
+              <TuneRoundedIcon fontSize="small" />
+              <span>Assets</span>
+            </button>
 
             <div className={cnHeader('center-controls')}>
               <span className={cnHeader('live-badge')}>🟢 Live Prices</span>

@@ -43,9 +43,12 @@ function Chart({ times, values, history }: ChartProps): JSX.Element {
       {
         label: history,
         data: values,
-        backgroundColor: 'rgba(74, 63, 105, 0.6)',
-        borderColor: 'rgba(74, 63, 105, 1)',
-        borderWidth: 1,
+        backgroundColor: 'rgba(127, 215, 255, 0.14)',
+        borderColor: '#58d5ff',
+        borderWidth: 2,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        tension: 0.36,
         fill: true,
       },
     ],
@@ -63,16 +66,16 @@ function Chart({ times, values, history }: ChartProps): JSX.Element {
       y: {
         beginAtZero: false,
         ticks: {
-          color: '#999',
+          color: 'rgba(214, 221, 255, 0.72)',
         },
         grid: {
-          color: '#333',
+          color: 'rgba(124, 143, 186, 0.16)',
         },
       },
       x: {
         display: true,
         ticks: {
-          color: '#999',
+          color: 'rgba(214, 221, 255, 0.64)',
           maxRotation: 45,
           minRotation: 0,
           autoSkip: true,
@@ -82,7 +85,7 @@ function Chart({ times, values, history }: ChartProps): JSX.Element {
           },
         },
         grid: {
-          color: '#333',
+          color: 'rgba(124, 143, 186, 0.1)',
         },
       },
     },
@@ -91,6 +94,11 @@ function Chart({ times, values, history }: ChartProps): JSX.Element {
         display: false,
       },
       tooltip: {
+        backgroundColor: 'rgba(9, 16, 30, 0.94)',
+        borderColor: 'rgba(127, 215, 255, 0.18)',
+        borderWidth: 1,
+        titleColor: '#f5f7ff',
+        bodyColor: 'rgba(214, 221, 255, 0.82)',
         callbacks: {
           title: (context) => {
             const index = context[0].dataIndex;

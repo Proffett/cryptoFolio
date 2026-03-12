@@ -1,0 +1,361 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4] [cursor=pointer]:
+      - img [ref=e6]
+      - generic [ref=e8]:
+        - generic [ref=e9]: 🟢 Live Prices
+        - button [ref=e81]: 📊 Virtual
+      - button [ref=e82]: Connect Wallet
+    - main [ref=e12]:
+      - generic [ref=e13]:
+        - paragraph [ref=e14]: Your total balance
+        - heading [level=1] [ref=e83]:
+          - superscript [ref=e16]: $
+          - text: "0.00"
+        - paragraph [ref=e17]: 24h Changes
+        - paragraph [ref=e18]:
+          - text: + $0.00
+          - generic [ref=e19]: ↑
+      - menu [ref=e20]:
+        - menuitem [ref=e84] [cursor=pointer]:
+          - generic [ref=e22]:
+            - generic [ref=e23]:
+              - generic [ref=e24]: 
+              - generic [ref=e25]:
+                - generic [ref=e26]: BTC
+                - generic [ref=e27]: Bitcoin
+            - paragraph [ref=e28]: 0 $0
+          - generic [ref=e29]:
+            - generic [ref=e30]:
+              - generic [ref=e31]: $69704
+              - generic [ref=e32]: Price
+            - generic [ref=e33]:
+              - generic [ref=e34]: +0%
+              - generic [ref=e35]: Profit/Loss
+        - menuitem [ref=e85] [cursor=pointer]:
+          - generic [ref=e37]:
+            - generic [ref=e38]:
+              - generic [ref=e39]: 
+              - generic [ref=e40]:
+                - generic [ref=e41]: ETH
+                - generic [ref=e42]: Ethereum
+            - paragraph [ref=e43]: 0 $0
+          - generic [ref=e44]:
+            - generic [ref=e45]:
+              - generic [ref=e46]: $2049.76
+              - generic [ref=e47]: Price
+            - generic [ref=e48]:
+              - generic [ref=e49]: +0%
+              - generic [ref=e50]: Profit/Loss
+        - menuitem [ref=e86] [cursor=pointer]:
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - generic [ref=e54]: 
+              - generic [ref=e55]:
+                - generic [ref=e56]: XRP
+                - generic [ref=e57]: Ripple
+            - paragraph [ref=e58]: 0 $0
+          - generic [ref=e59]:
+            - generic [ref=e60]:
+              - generic [ref=e61]: $1.37
+              - generic [ref=e62]: Price
+            - generic [ref=e63]:
+              - generic [ref=e64]: +0%
+              - generic [ref=e65]: Profit/Loss
+        - menuitem [ref=e87] [cursor=pointer]:
+          - generic [ref=e67]:
+            - generic [ref=e68]:
+              - generic [ref=e69]: 
+              - generic [ref=e70]:
+                - generic [ref=e71]: ADA
+                - generic [ref=e72]: Cardano
+            - paragraph [ref=e73]: 0 $0
+          - generic [ref=e74]:
+            - generic [ref=e75]:
+              - generic [ref=e76]: $0.260027
+              - generic [ref=e77]: Price
+            - generic [ref=e78]:
+              - generic [ref=e79]: +0%
+              - generic [ref=e80]: Profit/Loss
+  - dialog "Portfolio setup Choose assets, enter virtual balances, and apply changes instantly without reloading the page. Virtual mode" [ref=e90]:
+    - heading "Portfolio setup Choose assets, enter virtual balances, and apply changes instantly without reloading the page. Virtual mode" [level=2] [ref=e91]:
+      - generic [ref=e92]:
+        - generic [ref=e93]:
+          - paragraph [ref=e94]: Portfolio setup
+          - paragraph [ref=e95]: Choose assets, enter virtual balances, and apply changes instantly without reloading the page.
+        - generic [ref=e97]: Virtual mode
+    - generic [ref=e99]:
+      - generic [ref=e100]:
+        - generic [ref=e102]:
+          - img [ref=e104]
+          - textbox "Search by symbol, coin name, or purpose" [ref=e106]
+          - group
+        - generic [ref=e107]:
+          - button "Select all" [ref=e108] [cursor=pointer]
+          - button "Clear" [ref=e109] [cursor=pointer]
+      - generic [ref=e110]:
+        - generic [ref=e111]:
+          - generic [ref=e112]: "4"
+          - generic [ref=e113]: assets selected
+        - generic [ref=e114]:
+          - generic [ref=e115]: "0"
+          - generic [ref=e116]: with saved amount
+        - generic [ref=e117]:
+          - generic [ref=e118]: "0"
+          - generic [ref=e119]: total units entered
+      - generic [ref=e120]:
+        - button "BTC" [ref=e121]:
+          - generic [ref=e122]: BTC
+          - img [ref=e123] [cursor=pointer]
+        - button "ETH" [ref=e125]:
+          - generic [ref=e126]: ETH
+          - img [ref=e127] [cursor=pointer]
+        - button "XRP" [ref=e129]:
+          - generic [ref=e130]: XRP
+          - img [ref=e131] [cursor=pointer]
+        - button "ADA" [ref=e133]:
+          - generic [ref=e134]: ADA
+          - img [ref=e135] [cursor=pointer]
+      - generic [ref=e137]:
+        - generic [ref=e138]:
+          - generic [ref=e139]:
+            - generic [ref=e140]:
+              - generic [ref=e142]: 
+              - generic [ref=e143]:
+                - generic [ref=e144]: BTC
+                - generic [ref=e145]: Bitcoin
+                - generic [ref=e146]: Digital gold
+            - generic [ref=e147] [cursor=pointer]:
+              - checkbox [checked] [ref=e148]
+              - img [ref=e149]
+          - generic [ref=e151]:
+            - generic [ref=e152]: Amount
+            - generic [ref=e153]:
+              - paragraph [ref=e155]: BTC
+              - textbox "Amount" [ref=e156]:
+                - /placeholder: "0.00"
+              - group:
+                - generic: Amount
+            - paragraph [ref=e157]: This amount will be used in virtual portfolio mode.
+        - generic [ref=e158]:
+          - generic [ref=e159]:
+            - generic [ref=e160]:
+              - generic [ref=e162]: 
+              - generic [ref=e163]:
+                - generic [ref=e164]: ADA
+                - generic [ref=e165]: Cardano
+                - generic [ref=e166]: Research-first chain
+            - generic [ref=e167] [cursor=pointer]:
+              - checkbox [checked] [ref=e168]
+              - img [ref=e169]
+          - generic [ref=e171]:
+            - generic [ref=e172]: Amount
+            - generic [ref=e173]:
+              - paragraph [ref=e175]: ADA
+              - textbox "Amount" [ref=e176]:
+                - /placeholder: "0.00"
+              - group:
+                - generic: Amount
+            - paragraph [ref=e177]: This amount will be used in virtual portfolio mode.
+        - generic [ref=e178]:
+          - generic [ref=e179]:
+            - generic [ref=e180]:
+              - generic [ref=e182]: 
+              - generic [ref=e183]:
+                - generic [ref=e184]: ETH
+                - generic [ref=e185]: Ethereum
+                - generic [ref=e186]: Smart contract leader
+            - generic [ref=e187] [cursor=pointer]:
+              - checkbox [checked] [ref=e188]
+              - img [ref=e189]
+          - generic [ref=e191]:
+            - generic [ref=e192]: Amount
+            - generic [ref=e193]:
+              - paragraph [ref=e195]: ETH
+              - textbox "Amount" [ref=e196]:
+                - /placeholder: "0.00"
+              - group:
+                - generic: Amount
+            - paragraph [ref=e197]: This amount will be used in virtual portfolio mode.
+        - generic [ref=e198]:
+          - generic [ref=e199]:
+            - generic [ref=e200]:
+              - generic [ref=e202]: 
+              - generic [ref=e203]:
+                - generic [ref=e204]: XRP
+                - generic [ref=e205]: Ripple
+                - generic [ref=e206]: Payments rail
+            - generic [ref=e207] [cursor=pointer]:
+              - checkbox [checked] [ref=e208]
+              - img [ref=e209]
+          - generic [ref=e211]:
+            - generic [ref=e212]: Amount
+            - generic [ref=e213]:
+              - paragraph [ref=e215]: XRP
+              - textbox "Amount" [ref=e216]:
+                - /placeholder: "0.00"
+              - group:
+                - generic: Amount
+            - paragraph [ref=e217]: This amount will be used in virtual portfolio mode.
+        - generic [ref=e218]:
+          - generic [ref=e219]:
+            - generic [ref=e222]:
+              - generic [ref=e223]: BSC
+              - generic [ref=e224]: Binance Coin
+              - generic [ref=e225]: Exchange ecosystem
+            - generic [ref=e226] [cursor=pointer]:
+              - checkbox [ref=e227]
+              - img [ref=e228]
+          - generic [ref=e230]:
+            - generic [ref=e231]: Amount
+            - generic [ref=e232]:
+              - paragraph [ref=e234]: BSC
+              - textbox "Amount" [disabled] [ref=e235]:
+                - /placeholder: Select asset first
+              - group:
+                - generic: Amount
+            - paragraph [ref=e236]: Select the asset to enable amount editing.
+        - generic [ref=e237]:
+          - generic [ref=e238]:
+            - generic [ref=e239]:
+              - generic [ref=e241]: 
+              - generic [ref=e242]:
+                - generic [ref=e243]: DOGE
+                - generic [ref=e244]: Dogecoin
+                - generic [ref=e245]: Community memecoin
+            - generic [ref=e246] [cursor=pointer]:
+              - checkbox [ref=e247]
+              - img [ref=e248]
+          - generic [ref=e250]:
+            - generic [ref=e251]: Amount
+            - generic [ref=e252]:
+              - paragraph [ref=e254]: DOGE
+              - textbox "Amount" [disabled] [ref=e255]:
+                - /placeholder: Select asset first
+              - group:
+                - generic: Amount
+            - paragraph [ref=e256]: Select the asset to enable amount editing.
+        - generic [ref=e257]:
+          - generic [ref=e258]:
+            - generic [ref=e259]:
+              - generic [ref=e261]: 
+              - generic [ref=e262]:
+                - generic [ref=e263]: LTC
+                - generic [ref=e264]: Litecoin
+                - generic [ref=e265]: Fast peer-to-peer
+            - generic [ref=e266] [cursor=pointer]:
+              - checkbox [ref=e267]
+              - img [ref=e268]
+          - generic [ref=e270]:
+            - generic [ref=e271]: Amount
+            - generic [ref=e272]:
+              - paragraph [ref=e274]: LTC
+              - textbox "Amount" [disabled] [ref=e275]:
+                - /placeholder: Select asset first
+              - group:
+                - generic: Amount
+            - paragraph [ref=e276]: Select the asset to enable amount editing.
+        - generic [ref=e277]:
+          - generic [ref=e278]:
+            - generic [ref=e279]:
+              - generic [ref=e281]: 
+              - generic [ref=e282]:
+                - generic [ref=e283]: XMR
+                - generic [ref=e284]: Monero
+                - generic [ref=e285]: Privacy-focused currency
+            - generic [ref=e286] [cursor=pointer]:
+              - checkbox [ref=e287]
+              - img [ref=e288]
+          - generic [ref=e290]:
+            - generic [ref=e291]: Amount
+            - generic [ref=e292]:
+              - paragraph [ref=e294]: XMR
+              - textbox "Amount" [disabled] [ref=e295]:
+                - /placeholder: Select asset first
+              - group:
+                - generic: Amount
+            - paragraph [ref=e296]: Select the asset to enable amount editing.
+        - generic [ref=e297]:
+          - generic [ref=e298]:
+            - generic [ref=e301]:
+              - generic [ref=e302]: SOL
+              - generic [ref=e303]: Solana
+              - generic [ref=e304]: Fast app execution
+            - generic [ref=e305] [cursor=pointer]:
+              - checkbox [ref=e306]
+              - img [ref=e307]
+          - generic [ref=e309]:
+            - generic [ref=e310]: Amount
+            - generic [ref=e311]:
+              - paragraph [ref=e313]: SOL
+              - textbox "Amount" [disabled] [ref=e314]:
+                - /placeholder: Select asset first
+              - group:
+                - generic: Amount
+            - paragraph [ref=e315]: Select the asset to enable amount editing.
+        - generic [ref=e316]:
+          - generic [ref=e317]:
+            - generic [ref=e318]:
+              - generic [ref=e320]: 
+              - generic [ref=e321]:
+                - generic [ref=e322]: XLM
+                - generic [ref=e323]: Stellar
+                - generic [ref=e324]: Cross-border transfers
+            - generic [ref=e325] [cursor=pointer]:
+              - checkbox [ref=e326]
+              - img [ref=e327]
+          - generic [ref=e329]:
+            - generic [ref=e330]: Amount
+            - generic [ref=e331]:
+              - paragraph [ref=e333]: XLM
+              - textbox "Amount" [disabled] [ref=e334]:
+                - /placeholder: Select asset first
+              - group:
+                - generic: Amount
+            - paragraph [ref=e335]: Select the asset to enable amount editing.
+        - generic [ref=e336]:
+          - generic [ref=e337]:
+            - generic [ref=e340]:
+              - generic [ref=e341]: THETA
+              - generic [ref=e342]: Theta
+              - generic [ref=e343]: Media delivery network
+            - generic [ref=e344] [cursor=pointer]:
+              - checkbox [ref=e345]
+              - img [ref=e346]
+          - generic [ref=e348]:
+            - generic [ref=e349]: Amount
+            - generic [ref=e350]:
+              - paragraph [ref=e352]: THETA
+              - textbox "Amount" [disabled] [ref=e353]:
+                - /placeholder: Select asset first
+              - group:
+                - generic: Amount
+            - paragraph [ref=e354]: Select the asset to enable amount editing.
+        - generic [ref=e355]:
+          - generic [ref=e356]:
+            - generic [ref=e357]:
+              - generic [ref=e359]: 
+              - generic [ref=e360]:
+                - generic [ref=e361]: TRX
+                - generic [ref=e362]: TRON
+                - generic [ref=e363]: High-throughput chain
+            - generic [ref=e364] [cursor=pointer]:
+              - checkbox [ref=e365]
+              - img [ref=e366]
+          - generic [ref=e368]:
+            - generic [ref=e369]: Amount
+            - generic [ref=e370]:
+              - paragraph [ref=e372]: TRX
+              - textbox "Amount" [disabled] [ref=e373]:
+                - /placeholder: Select asset first
+              - group:
+                - generic: Amount
+            - paragraph [ref=e374]: Select the asset to enable amount editing.
+    - generic [ref=e375]:
+      - button "Reset defaults" [ref=e376] [cursor=pointer]:
+        - img [ref=e378]
+        - text: Reset defaults
+      - button "Cancel" [ref=e380] [cursor=pointer]
+      - button "Apply changes" [ref=e381] [cursor=pointer]:
+        - img [ref=e383]
+        - text: Apply changes

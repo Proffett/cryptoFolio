@@ -1,0 +1,87 @@
+- generic [ref=e3]:
+  - generic [ref=e4] [cursor=pointer]:
+    - img [ref=e6]
+    - generic [ref=e8]:
+      - generic [ref=e9]: 🟢 Live Prices
+      - button "🔗 Real" [ref=e10]
+    - button "Connect Wallet" [ref=e11]
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - paragraph [ref=e14]: Your total balance
+      - heading "$0.00" [level=1] [ref=e15]:
+        - superscript [ref=e16]: $
+        - text: "0.00"
+      - paragraph [ref=e17]: 24h Changes
+      - paragraph [ref=e18]: +$0.00↑
+    - generic [ref=e19]:
+      - paragraph [ref=e20]: 🔗 Real Portfolio mode is active
+      - paragraph [ref=e21]: Connect MetaMask to see your real balances
+    - menu [ref=e22]:
+      - menuitem " BTC Bitcoin 0 $0 $69436 Price +0% Profit/Loss" [ref=e23] [cursor=pointer]:
+        - generic [ref=e24]:
+          - generic [ref=e25]:
+            - generic [ref=e26]: 
+            - generic [ref=e27]:
+              - generic [ref=e28]: BTC
+              - generic [ref=e29]: Bitcoin
+          - paragraph [ref=e30]:
+            - text: "0"
+            - text: $0
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - generic [ref=e33]: $69436
+            - generic [ref=e34]: Price
+          - generic [ref=e35]:
+            - generic [ref=e36]: +0%
+            - generic [ref=e37]: Profit/Loss
+      - menuitem " ETH Ethereum 0 $0 $2040.58 Price +0% Profit/Loss" [ref=e38] [cursor=pointer]:
+        - generic [ref=e39]:
+          - generic [ref=e40]:
+            - generic [ref=e41]: 
+            - generic [ref=e42]:
+              - generic [ref=e43]: ETH
+              - generic [ref=e44]: Ethereum
+          - paragraph [ref=e45]:
+            - text: "0"
+            - text: $0
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - generic [ref=e48]: $2040.58
+            - generic [ref=e49]: Price
+          - generic [ref=e50]:
+            - generic [ref=e51]: +0%
+            - generic [ref=e52]: Profit/Loss
+      - menuitem " XRP Ripple 0 $0 $1.37 Price +0% Profit/Loss" [ref=e53] [cursor=pointer]:
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e56]: 
+            - generic [ref=e57]:
+              - generic [ref=e58]: XRP
+              - generic [ref=e59]: Ripple
+          - paragraph [ref=e60]:
+            - text: "0"
+            - text: $0
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - generic [ref=e63]: $1.37
+            - generic [ref=e64]: Price
+          - generic [ref=e65]:
+            - generic [ref=e66]: +0%
+            - generic [ref=e67]: Profit/Loss
+      - menuitem " ADA Cardano 0 $0 $0.258868 Price +0% Profit/Loss" [ref=e68] [cursor=pointer]:
+        - generic [ref=e69]:
+          - generic [ref=e70]:
+            - generic [ref=e71]: 
+            - generic [ref=e72]:
+              - generic [ref=e73]: ADA
+              - generic [ref=e74]: Cardano
+          - paragraph [ref=e75]:
+            - text: "0"
+            - text: $0
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - generic [ref=e78]: $0.258868
+            - generic [ref=e79]: Price
+          - generic [ref=e80]:
+            - generic [ref=e81]: +0%
+            - generic [ref=e82]: Profit/Loss

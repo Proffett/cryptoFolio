@@ -1,29 +1,71 @@
 .Header {
   display: flex;
   position: sticky;
-  top: 0;
-  background: #3c3f4b29;
+  top: 16px;
+  margin: 16px 20px 18px;
+  padding: 18px 20px;
+  border: 1px solid var(--app-border);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(14, 23, 44, 0.9), rgba(9, 16, 30, 0.9));
+  box-shadow: var(--app-shadow);
+  backdrop-filter: blur(18px);
   flex-direction: row;
   justify-content: space-between;
-  padding: 35px 20px;
-  color: white;
-  cursor: pointer;
+  color: var(--app-text);
+  z-index: 12;
+
+  &__setup-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border: 1px solid var(--app-border);
+    border-radius: 14px;
+    background: rgba(12, 22, 42, 0.78);
+    color: var(--app-text);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    &:hover {
+      transform: translateY(-1px);
+      background: rgba(16, 29, 56, 0.92);
+      border-color: var(--app-border-strong);
+      box-shadow: 0 14px 26px rgba(5, 11, 23, 0.24);
+    }
+
+    &:focus-visible {
+      outline: none;
+      border-color: rgba(127, 215, 255, 0.48);
+      box-shadow:
+        0 0 0 3px rgba(72, 194, 255, 0.16),
+        0 14px 26px rgba(5, 11, 23, 0.24);
+    }
+  }
 
   &__wallet-button {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--app-accent-strong) 0%, #58d5ff 100%);
+    color: var(--app-text);
     border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 12px 20px;
+    border-radius: 14px;
     font-weight: 600;
     font-size: 14px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 16px 34px var(--app-accent-glow);
 
     &:hover:not(:disabled) {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+      box-shadow: 0 20px 42px rgba(42, 123, 255, 0.42);
     }
 
     &:disabled {
@@ -33,19 +75,20 @@
   }
 
   &__wallet-connected {
-    background: rgba(76, 175, 80, 0.2);
-    color: #4caf50;
+    background: rgba(12, 24, 45, 0.76);
+    color: var(--app-text);
     padding: 10px 16px;
-    border-radius: 8px;
+    border-radius: 14px;
     font-weight: 600;
     font-size: 14px;
-    border: 1px solid rgba(76, 175, 80, 0.3);
+    border: 1px solid rgba(127, 215, 255, 0.18);
     cursor: pointer;
     transition: all 0.2s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
     &:hover {
-      background: rgba(76, 175, 80, 0.3);
-      border-color: rgba(76, 175, 80, 0.5);
+      background: rgba(15, 29, 54, 0.92);
+      border-color: rgba(127, 215, 255, 0.28);
     }
   }
 
@@ -53,13 +96,14 @@
     position: fixed;
     top: 80px;
     right: 20px;
-    background: rgba(244, 67, 54, 0.95);
-    color: white;
+    background: rgba(39, 14, 24, 0.94);
+    color: var(--app-text);
     padding: 12px 20px;
-    border-radius: 8px;
+    border: 1px solid rgba(255, 123, 146, 0.28);
+    border-radius: 14px;
     font-size: 14px;
     font-weight: 500;
-    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+    box-shadow: 0 16px 32px rgba(24, 6, 11, 0.32);
     z-index: 1000;
     animation: slideIn 0.3s ease-out;
   }
@@ -71,36 +115,37 @@
   }
 
   &__live-badge {
-    background: rgba(76, 175, 80, 0.15);
-    color: #4caf50;
-    padding: 6px 12px;
-    border-radius: 6px;
+    background: rgba(69, 215, 164, 0.12);
+    color: var(--app-success);
+    padding: 8px 14px;
+    border-radius: 999px;
     font-size: 12px;
     font-weight: 600;
-    border: 1px solid rgba(76, 175, 80, 0.3);
+    border: 1px solid rgba(69, 215, 164, 0.2);
     animation: pulse 2s ease-in-out infinite;
   }
 
   &__mode-toggle {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 8px 16px;
-    border-radius: 6px;
+    background: rgba(12, 22, 42, 0.78);
+    color: var(--app-text);
+    border: 1px solid var(--app-border);
+    padding: 10px 16px;
+    border-radius: 14px;
     font-weight: 600;
     font-size: 13px;
     cursor: pointer;
     transition: all 0.2s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
     &:hover {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(16, 29, 56, 0.92);
+      border-color: var(--app-border-strong);
       transform: translateY(-1px);
     }
   }
 
   &__mode-status {
-    color: #4caf50;
+    color: var(--app-accent);
     margin-left: 4px;
     font-size: 14px;
   }
@@ -123,5 +168,25 @@
   to {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .Header {
+    top: 12px;
+    margin: 12px 14px 16px;
+    padding: 14px 16px;
+
+    &__center-controls {
+      gap: 10px;
+    }
+
+    &__wallet-button,
+    &__wallet-connected,
+    &__mode-toggle,
+    &__setup-button {
+      font-size: 12px;
+      padding: 10px 14px;
+    }
   }
 }

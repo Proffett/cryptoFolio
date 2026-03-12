@@ -33,15 +33,17 @@ function MainView() {
       <main className={cnMainView()}>
         <div className={cnMainView('summary-portfolio')}>
           <p className="text_secondary">Your total balance</p>
-          <h1>
-            <sup className={cnMainView('dollar_size')}>$</sup>
-            {summary.toFixed(2)}
+          <h1 className={cnMainView('summary-amount')}>
+            <span className={cnMainView('summary-currency')}>$</span>
+            <span>{summary.toFixed(2)}</span>
           </h1>
-          <p className="text_secondary">24h Changes</p>
-          <p className={cnMainView('summary-portfolio_daily-changes')}>
-            ${profit.toFixed(2)}
-            <span>&#8593;</span>
-          </p>
+          <div className={cnMainView('summary-change-block')}>
+            <p className="text_secondary">24h Changes</p>
+            <p className={cnMainView('summary-portfolio_daily-changes')}>
+              ${profit.toFixed(2)}
+              <span>&#8593;</span>
+            </p>
+          </div>
         </div>
 
         {isRealMode && !account && (
@@ -61,7 +63,6 @@ function MainView() {
             </div>
           ) : (
             data.map((coin: CoinData, index: number) => {
-              const key = index + Math.random();
               const coinName = coin[0];
               const coinCurrentTick = coin[1].USD;
               const coinBalance = coin.balance;
@@ -70,7 +71,7 @@ function MainView() {
 
               return (
                 <div
-                  key={key}
+                  key={coinName}
                   className={cnMainView('coin-item')}
                   role="menuitem"
                   onClick={(event) => handleCoinItem(event, coinName)}

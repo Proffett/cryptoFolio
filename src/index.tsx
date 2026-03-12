@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { App } from './App';
+import { UIStateProvider } from './hooks/useUIState';
 import './styles/App.scss';
 
 const queryClient = new QueryClient({
@@ -20,9 +21,11 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <UIStateProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </UIStateProvider>
     </QueryClientProvider>
   </React.StrictMode>,
 );

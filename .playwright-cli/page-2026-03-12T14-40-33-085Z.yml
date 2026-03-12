@@ -1,0 +1,17 @@
+- generic [ref=e3]:
+  - generic [ref=e4] [cursor=pointer]:
+    - img [ref=e6]
+    - generic [ref=e8]:
+      - generic [ref=e9]: 🟢 Live Prices
+      - button "📊 Virtual" [ref=e10]
+    - button "Connect Wallet" [ref=e11]
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - paragraph [ref=e14]: Your total balance
+      - heading "$0.00" [level=1] [ref=e15]:
+        - superscript [ref=e16]: $
+        - text: "0.00"
+      - paragraph [ref=e17]: 24h Changes
+      - paragraph [ref=e18]: +$0.00↑
+    - menu [ref=e19]:
+      - paragraph [ref=e20]: Loading...

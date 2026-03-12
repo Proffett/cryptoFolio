@@ -59,8 +59,7 @@ function CoinView() {
 
       {!isPortfolioLoading && (
         <div className={cnCoinView('coin-carousel-container')}>
-          {coinsData.map((coinItem: CoinData, index: number) => {
-            const key = index + Math.random();
+          {coinsData.map((coinItem: CoinData) => {
             const coinItemName = coinItem[0];
             const coinItemFullName = SymbolToFullName[coinItemName];
             const coinItemBalance = coinItem.balance;
@@ -69,7 +68,7 @@ function CoinView() {
             return (
               <div
                 role="main"
-                key={key}
+                key={coinItemName}
                 className={
                   coinClassActive === coinItemName.toUpperCase()
                     ? cnCoinView('coin-item-list-active')

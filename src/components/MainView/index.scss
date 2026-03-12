@@ -2,9 +2,36 @@
   margin: 0 auto;
 
   &__summary-portfolio {
+    margin: 0 20px 24px;
+    padding: 28px 24px;
+    border: 1px solid var(--app-border);
+    border-radius: 28px;
+    text-align: left;
+    background:
+      radial-gradient(circle at top right, rgba(42, 123, 255, 0.16), transparent 36%),
+      linear-gradient(180deg, rgba(15, 24, 45, 0.96), rgba(9, 16, 30, 0.96));
+    box-shadow: var(--app-shadow-strong);
+
+    h1 {
+      margin: 10px 0 18px;
+      font-size: clamp(2.5rem, 8vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: -0.06em;
+    }
+
+    p {
+      margin: 0;
+    }
 
     &_daily-changes {
-      color: #48a386;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      color: var(--app-success);
+      border: 1px solid rgba(69, 215, 164, 0.22);
+      border-radius: 999px;
+      background: rgba(69, 215, 164, 0.08);
 
       &:before {
         content: '+'
@@ -16,13 +43,30 @@
     }
   }
 
-  &__dollar_size {
-    font-size: 15px;
+  &__summary-amount {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &__summary-change-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &__summary-currency {
+    padding-top: 8px;
+    color: var(--app-accent);
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    line-height: 1;
   }
 
   &__coins-wrapper {
     display: flex;
     flex-direction: column;
+    gap: 14px;
   }
 
   &__coin-item {
@@ -30,10 +74,24 @@
     display: flex;
     flex-direction: column;
     min-height: 150px;
-    margin: 12px 20px;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
+    margin: 0 20px;
+    padding: 18px;
+    border: 1px solid var(--app-border);
+    border-radius: 24px;
+    background: var(--app-surface-card);
+    box-shadow: var(--app-shadow);
+    transition:
+      transform 180ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      background 180ms ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: var(--app-border-strong);
+      box-shadow: var(--app-shadow-strong);
+      background: var(--app-surface-card-hover);
+    }
 
     &_left-column {
       display: flex;
@@ -52,6 +110,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
   }
 
   &__coin-item_left-column {
@@ -70,23 +129,29 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    margin-left: 5px;
+    margin-left: 10px;
+    gap: 2px;
   }
 
   &__coin-item_right-column {
     display: flex;
     flex-direction: column;
     text-align: right;
+    align-items: flex-end;
+    gap: 2px;
   }
 
   &__coin-item_right-column-up {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
     text-align: right;
+    font-weight: 600;
   }
 
   &__profit {
-    color: #48a386;
+    color: var(--app-success);
 
     &:before {
       content: '+'
@@ -98,7 +163,7 @@
   }
 
   &__loss {
-    color: #b23d3d;
+    color: var(--app-danger);
 
     &:before {
       content: '-'
@@ -110,12 +175,13 @@
   }
 
   &__wallet-notice {
-    margin: 20px;
+    margin: 0 20px 6px;
     padding: 20px;
-    background: rgba(74, 63, 105, 0.3);
-    border: 1px solid rgba(74, 63, 105, 0.5);
-    border-radius: 10px;
+    background: rgba(15, 24, 45, 0.84);
+    border: 1px solid rgba(127, 215, 255, 0.18);
+    border-radius: 24px;
     text-align: center;
+    box-shadow: var(--app-shadow);
     
     p:first-child {
       font-size: 16px;
@@ -125,12 +191,13 @@
   }
 
   &__empty-notice {
-    margin: 20px;
+    margin: 0 20px 6px;
     padding: 30px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    background: rgba(12, 20, 39, 0.76);
+    border: 1px solid var(--app-border);
+    border-radius: 24px;
     text-align: center;
+    box-shadow: var(--app-shadow);
     
     p:first-child {
       font-size: 16px;
@@ -139,4 +206,20 @@
     }
   }
 
+}
+
+@media (max-width: 767px) {
+  .MainView {
+    &__summary-portfolio {
+      margin: 0 14px 20px;
+      padding: 24px 18px;
+    }
+
+    &__coin-item,
+    &__wallet-notice,
+    &__empty-notice {
+      margin-left: 14px;
+      margin-right: 14px;
+    }
+  }
 }

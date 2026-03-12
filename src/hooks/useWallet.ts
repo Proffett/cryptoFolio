@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ethers } from 'ethers';
+import {portfolioService} from "@/services/portfolioService.ts";
 
 interface WalletState {
   account: string | null;
@@ -43,6 +44,9 @@ export function useWallet() {
         isConnecting: false,
         error: null,
       });
+
+      portfolioService.setMode('real');
+
     } catch (error: any) {
       console.error('Failed to connect wallet:', error);
       setWalletState((prev) => ({
@@ -132,7 +136,7 @@ export function useWallet() {
       }
     };
 
-    const handleChainChanged = async (chainId: string) => {
+    const handleChainChanged = async (_chainId: string) => {
       if (!window.ethereum) return;
       
       try {

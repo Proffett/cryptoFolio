@@ -13,6 +13,13 @@ export interface CoinData {
   calcProfit: number;
 }
 
+export interface CoinDefinition {
+  symbol: string;
+  name: string;
+  tagline: string;
+  accent: string;
+}
+
 export interface AppState {
   cryptoData: CoinData[];
   coins: string[];
