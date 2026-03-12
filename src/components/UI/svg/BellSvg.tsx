@@ -1,6 +1,6 @@
 import React from 'react';
 
-function BellSvg(): JSX.Element {
+function BellSvg(): React.ReactElement {
   return (
     <svg
       version="1.1"

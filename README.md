@@ -1,126 +1,96 @@
 # CryptoFolio
 
-A modern cryptocurrency portfolio tracking application built with React 18, TypeScript, Redux Toolkit, and Material-UI 6, powered by Vite for lightning-fast development.
+CryptoFolio is a cryptocurrency portfolio tracker built with React, TypeScript, Vite, and Material UI. The application shows live market data, lets the user manage a portfolio in virtual or wallet-connected mode, and visualizes price history with charts.
 
-## 🚀 Features
+## Features
 
-- **Real-time Crypto Tracking**: Monitor cryptocurrency prices and market data
-- **Portfolio Management**: Add and track your cryptocurrency holdings
-- **Interactive Charts**: Visualize price history with Chart.js
-- **Responsive Design**: Modern UI built with Material-UI 6
-- **Redux State Management**: Centralized state management with Redux Toolkit and Redux Saga
-- **TypeScript**: Full type safety across the codebase
-- **Lightning Fast Development**: Powered by Vite for instant hot reload
-- **Secure**: All critical security vulnerabilities resolved
+- Track cryptocurrency prices and portfolio value
+- Switch between virtual portfolio mode and real wallet mode
+- Manage favorite assets and balances through a modal UI
+- View price history charts with Chart.js
+- Use responsive UI components built on Material UI
+- Cache and synchronize market data with TanStack Query
 
-## 🛠 Tech Stack
+## Tech Stack
 
-- **React 18.3.1** - Latest React with concurrent features
-- **TypeScript 5.7.2** - Modern static type checking
-- **Vite 6.x** - Next-generation frontend tooling
-- **Material-UI 6.x** - Latest component library with improved performance
-- **Redux Toolkit 2.3+ + Redux Saga** - Modern Redux state management and side effects
-- **Chart.js 4.4+** - Interactive charts and data visualization
-- **React Router v6.30+** - Modern client-side routing
-- **PostCSS + Sass** - Advanced CSS preprocessing with modern tooling
-- **ESLint 9** - Modern linting with flat config
+- React 19
+- TypeScript 5.9
+- Vite 8
+- Material UI 7
+- TanStack Query 5
+- React Router 6
+- Chart.js 4
+- Sass and PostCSS
+- ESLint 10
+- pnpm
 
-## 📦 Installation
+## Getting Started
 
-1. Clone the repository:
+### Prerequisites
+
+- Node.js 20+ recommended
+- pnpm 10.15.1 or compatible 10.x release
+
+### Installation
+
 ```bash
 git clone <repository-url>
 cd cryptoFolio
+pnpm install
 ```
 
-2. Install dependencies:
+### Development
+
 ```bash
-npm install
+pnpm dev
 ```
 
-3. Start the development server:
+By default the Vite dev server runs on `http://localhost:2000`.
+
+### Production Build
+
 ```bash
-npm run dev
+pnpm build
+pnpm preview
 ```
 
-The app will be available at [http://testweb.na4u.ru](http://testweb.na4u.ru)
+## Available Scripts
 
-## 🔧 Available Scripts
+- `pnpm dev` starts the Vite development server
+- `pnpm build` runs TypeScript checks and creates a production build
+- `pnpm preview` serves the production build locally
+- `pnpm lint` runs ESLint
+- `pnpm lint:fix` runs ESLint with autofix
+- `pnpm test` starts Vitest in interactive mode
+- `pnpm exec vitest run` runs tests once in CI style
 
-- `npm run dev` - Runs the app in development mode with Vite (⚡ super fast)
-- `npm run build` - Builds the app for production with TypeScript checks
-- `npm run preview` - Preview the production build locally
-- `npm run test` - Runs tests with Vitest
-- `npm run lint` - Lints the codebase with ESLint
-- `npm run lint:fix` - Automatically fixes linting issues
+## Project Notes
 
-## 🎨 UI Components
+- Package management is standardized on `pnpm`
+- The lockfile source of truth is `pnpm-lock.yaml`
+- Production dependencies are currently free of known vulnerabilities according to `pnpm audit`
+- Vitest is configured, but there are no test files in the repository yet
+- The production bundle currently triggers a chunk-size warning in Vite and can be optimized later with code splitting
 
-The application uses Material-UI 6 components:
-- **Modal**: Custom coin selection and balance management (using MUI Dialog)
-- **Charts**: Interactive price charts with Chart.js
-- **Responsive Layout**: Mobile-friendly design
+## Recent Updates
 
-## 📊 State Management
+### March 12, 2026
 
-- **Redux Toolkit**: Modern Redux state management
-- **Redux Saga**: Handles async operations and side effects
-- **Local Storage**: Persists user preferences and portfolio data
+- Migrated the project from mixed lockfiles to `pnpm`
+- Updated the React stack to React 19 and React DOM 19
+- Updated Material UI to v7 and Vite to v8
+- Removed unused `react-spring`, which also removed a vulnerable transitive dependency chain
+- Adapted component typings and state synchronization logic for the newer React and ESLint rules
+- Verified `pnpm audit`, `pnpm lint`, and `pnpm build`
 
-## 🛡️ TypeScript
+## Project Structure
 
-- All source code is written in TypeScript for type safety and better developer experience.
-- Custom types are defined in `src/types/`.
-- TypeScript configuration is in `tsconfig.json`.
+- `src/components` reusable UI and feature components
+- `src/hooks` custom React hooks
+- `src/services` portfolio and data access logic
+- `src/mock` initial mock data and defaults
+- `src/styles` shared styles
 
-## 🔄 Recent Updates
-
-### Vite Migration & Security Overhaul (Latest - 2025)
-- ✅ **Migrated from Create React App to Vite** - Lightning fast development (113ms startup vs several seconds)
-- ✅ **Eliminated 9 critical/high security vulnerabilities** - Only 4 moderate dev-only vulnerabilities remain
-- ✅ **Updated to latest dependencies**:
-  - React 18.3.1, TypeScript 5.7.2, Material-UI 6.x
-  - Modern ESLint 9 with flat config
-  - PostCSS 8.4+ with ES modules
-- ✅ **Replaced vulnerable packages**:
-  - Removed `react-spring-modal` → replaced with secure MUI Dialog
-  - Removed outdated webpack ecosystem from react-scripts
-- ✅ **Modern tooling**: Vite, Vitest, modern build pipeline
-- ✅ **Performance improvements**: Optimized bundle size and fast HMR
-
-### TypeScript & Redux Toolkit Migration (Previous)
-- ✅ Migrated the entire codebase to TypeScript
-- ✅ Adopted Redux Toolkit for modern Redux patterns
-- ✅ Updated all Redux logic and types
-- ✅ Refactored for React Router v6 (replaced `Switch`/`useHistory` with `Routes`/`useNavigate`)
-- ✅ Removed deprecated/legacy packages and fixed all critical dependency issues
-- ✅ Fixed all TypeScript and linter errors
-
-### Previous Key Changes
-- Upgraded to Material-UI 5 and React 18
-- Updated Chart.js configuration for v4+
-- Improved Webpack configuration for modern CSS optimization
-
-## 🚨 Known Issues
-
-- 4 moderate security vulnerabilities in development dependencies (esbuild/vitest - dev-only, not affecting production)
-- Bundle size warning for chunks >500KB (can be optimized with code splitting if needed)
-- Some legacy peer dependency warnings from existing dependencies (non-blocking)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 👨‍💻 Author
+## Author
 
 Evgeny <monatana-work@yandex.ru>
-
----

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LoupSvg(): JSX.Element {
+function LoupSvg(): React.ReactElement {
   return (
     <svg
       version="1.1"

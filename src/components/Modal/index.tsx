@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Checkbox,
@@ -126,15 +126,11 @@ export function Modal({ isOpen, onClose }: ModalProps) {
   );
   const isRealMode = portfolioService.isRealMode();
 
-  useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-
+  const handleOpen = () => {
     setSearch('');
     setLocalFavorites(favorites);
     setLocalBalances(createBalanceDraft(balances));
-  }, [isOpen, favorites, balances]);
+  };
 
   const handleToggleCoin = (coin: string): void => {
     setLocalFavorites((previousFavorites) =>
@@ -206,6 +202,11 @@ export function Modal({ isOpen, onClose }: ModalProps) {
       onClose={onClose}
       maxWidth="md"
       fullWidth
+      slotProps={{
+        transition: {
+          onEnter: handleOpen,
+        },
+      }}
       PaperProps={{
         className: 'Modal__paper',
         sx: {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LeftArrowSvg(): JSX.Element {
+function LeftArrowSvg(): React.ReactElement {
   return (
     <svg
       version="1.1"

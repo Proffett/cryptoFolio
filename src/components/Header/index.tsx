@@ -10,19 +10,21 @@ import { HeaderProps } from '../../types';
 import { useWallet } from '../../hooks/useWallet';
 import { portfolioService } from '../../services/portfolioService';
 
-function Header({ mainScreen }: HeaderProps): JSX.Element {
+function Header({ mainScreen }: HeaderProps): React.ReactElement {
   const { isOpen: isModal, toggle: toggleModal } = useModal();
   const { account, connectWallet, disconnect, isConnected, isConnecting, error } = useWallet();
-  const [showError, setShowError] = useState(false);
+  const [dismissedError, setDismissedError] = useState<string | null>(null);
   const [isRealMode, setIsRealMode] = useState(portfolioService.isRealMode());
+  const visibleError = error && error !== dismissedError ? error : null;
 
   useEffect(() => {
-    if (error) {
-      setShowError(true);
-      const timer = setTimeout(() => setShowError(false), 5000);
-      return () => clearTimeout(timer);
+    if (!visibleError) {
+      return;
     }
-  }, [error]);
+
+    const timer = setTimeout(() => setDismissedError(visibleError), 5000);
+    return () => clearTimeout(timer);
+  }, [visibleError]);
 
 
   const formatAddress = (address: string) => {
@@ -40,9 +42,9 @@ function Header({ mainScreen }: HeaderProps): JSX.Element {
     <>
       <Modal isOpen={isModal} onClose={toggleModal} />
       
-      {showError && error && (
+      {visibleError && (
         <div className={cnHeader('error-toast')}>
-          {error}
+          {visibleError}
         </div>
       )}
 

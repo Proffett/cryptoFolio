@@ -6,7 +6,7 @@ import './index.scss';
 import MainView from '../components/MainView';
 import CoinView from '../components/CoinView';
 
-function App(): JSX.Element {
+function App(): React.ReactElement {
   return (
     <div className={cnApp()}>
       <Routes>

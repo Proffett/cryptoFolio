@@ -34,7 +34,7 @@ function formatTimestamp(timestamp: number, history: string): string {
   }
 }
 
-function Chart({ times, values, history }: ChartProps): JSX.Element {
+function Chart({ times, values, history }: ChartProps): React.ReactElement {
   const formattedLabels = times.map(time => formatTimestamp(time, history));
   
   const data = {
