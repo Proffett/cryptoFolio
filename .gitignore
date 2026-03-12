@@ -25,6 +25,8 @@ yarn-debug.log*
 yarn-error.log*
 /yarn.lock
 
+.env
+
 .playwright-cli
 .pnpm-store
 .local
