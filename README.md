@@ -2,6 +2,8 @@
 
 CryptoFolio is a cryptocurrency portfolio tracker built with React, TypeScript, Vite, and Material UI. The application shows live market data, lets the user manage a portfolio in virtual or wallet-connected mode, and visualizes price history with charts.
 
+DEMO: http://testweb.na4u.ru
+
 ## Features
 
 - Track cryptocurrency prices and portfolio value
